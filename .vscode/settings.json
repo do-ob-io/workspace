@@ -1,0 +1,85 @@
+{
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 10000,
+  "files.autoSaveWhenNoErrors": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": false,
+  "editor.quickSuggestions": {
+    "strings": "on",
+  },
+  "workbench.editorAssociations": {
+    "*.svg": "default"
+  },
+  "files.eol": "\n",
+  "files.associations": {
+    "*.ejs": "html",
+    "*.ejs.t": "html",
+    "*.css": "tailwindcss"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/.yarn": true,
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/.dist": true,
+    "**/.types": true,
+    "**/.out": true,
+    "**/.pkg": true,
+    "**/.srv": true,
+    "**/.web": true,
+    "**/dist": true,
+    "**/out": true,
+    "**/pkg": true,
+    "**/srv": true,
+    "**/.angular": true,
+    "**/.vscode": true,
+    "**/*.lock": true,
+    "**/*lock.yaml": true,
+    "**/package-lock.json": true,
+    "**/*.tsbuildinfo": true,
+    "**/*.schema.json": true,
+    "**/.pnp.*": true
+  },
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "html.format.unformatted": "wbr,%",
+  "npm.packageManager": "npm",
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "python.languageServer": "Pylance",
+  "eslint.enable": true,
+  "eslint.run": "onSave",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "[typescript][javascript][typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  },
+  "[jsonc][json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "class:list",
+    ".*Styles.*"
+  ]
+}
