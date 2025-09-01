@@ -2,10 +2,13 @@
   "name": "do-ob-io",
   "version": "1.0.0",
   "description": "Workspace for do-ob npm NodeJS projects",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "workspaces": [
+    "npm/*"
+  ],
   "author": "",
   "license": "ISC"
 }

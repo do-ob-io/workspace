@@ -5,3 +5,6 @@ description = "Workspace for do-ob uv Python projects"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = []
+
+[tool.uv.workspace]
+members = ["uv/*"]
