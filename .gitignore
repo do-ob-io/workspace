@@ -4,6 +4,9 @@ npm/*
 uv/*
 !uv/README.md
 
+# Python
+.venv/
+
 # Logs
 logs
 *.log
