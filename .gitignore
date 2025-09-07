@@ -1,8 +1,10 @@
 # Workspace
-npm/*
+npm/**/*
 !npm/README.md
-uv/*
+uv/**/*
 !uv/README.md
+package-lock.json
+uv.lock
 
 # Python
 .venv/
