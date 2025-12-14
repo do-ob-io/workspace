@@ -54,7 +54,6 @@
   "html.format.unformatted": "wbr,%",
   "npm.packageManager": "npm",
   "javascript.updateImportsOnFileMove.enabled": "never",
-  "python.languageServer": "Pylance",
   "python.envFile": "${workspaceFolder}/.venv",
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
   "python.terminal.activateEnvironment": false,
