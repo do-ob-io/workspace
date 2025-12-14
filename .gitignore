@@ -1,8 +1,10 @@
 # Workspace
-npm/**/*
-!npm/README.md
-uv/**/*
-!uv/README.md
+nodejs/**/*
+python/**/*
+container/**/*
+!nodejs/README.md
+!python/README.md
+!container/README.md
 package-lock.json
 uv.lock
 
