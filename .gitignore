@@ -6,6 +6,7 @@ container/**/*
 !python/README.md
 !container/README.md
 package-lock.json
+pnpm-lock.yaml
 uv.lock
 
 # Python
