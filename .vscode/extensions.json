@@ -12,5 +12,6 @@
     "tamasfe.even-better-toml",
     "charliermarsh.ruff",
     "rust-lang.rust-analyzer",
+    "vadimcn.vscode-lldb"
   ]
 }
