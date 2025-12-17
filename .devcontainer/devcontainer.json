@@ -40,7 +40,7 @@
         "bradlc.vscode-tailwindcss",
         "vitest.explorer",
         "redhat.vscode-yaml",
-        "ms-python.python", 
+        "ms-python.python",
         "ms-python.debugpy",
         "astral-sh.ty",
         "mikestead.dotenv",
