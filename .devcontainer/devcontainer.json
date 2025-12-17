@@ -1,9 +1,8 @@
 {
   "name": "Development Container",
-
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "devcontainer",
+  "workspaceFolder": "/workspace",
 
   "customizations": {
     "vscode": {
