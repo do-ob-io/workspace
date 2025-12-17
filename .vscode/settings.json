@@ -1,4 +1,17 @@
 {
+  /**
+   * VSCode settings for the project
+   * @see https://code.visualstudio.com/docs/getstarted/settings
+   */
+
+   // Git settings
+  "git.repositoryScanIgnoredFolders": [
+    "node_modules"
+  ],
+  "git.autoRepositoryDetection": true,
+  "git.repositoryScanMaxDepth": 2,
+
+  // File and editor settings
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 10000,
   "files.autoSaveWhenNoErrors": true,
@@ -9,9 +22,13 @@
   "editor.quickSuggestions": {
     "strings": "on",
   },
+
+  // Default editor for specific file types
   "workbench.editorAssociations": {
-    "*.svg": "default"
+    "*.svg": "default" // Open SVG files with the default text editor
   },
+
+  // File associations and exclusions
   "files.eol": "\n",
   "files.associations": {
     "*.ejs": "html",
@@ -25,6 +42,8 @@
     "**/CVS": true,
     "**/.DS_Store": true
   },
+
+  // Search exclusions
   "search.exclude": {
     "**/.git": true,
     "**/.yarn": true,
@@ -50,16 +69,23 @@
     "**/*.schema.json": true,
     "**/.pnp.*": true
   },
-  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+
+  /**
+   * Web Settings
+   */
   "html.format.unformatted": "wbr,%",
-  "npm.packageManager": "npm",
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "python.envFile": "${workspaceFolder}/.venv",
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
-  "python.terminal.activateEnvironment": false,
-  "ruff.interpreter": [
-      "${workspaceFolder}/.venv/bin/python"
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "class:list",
+    ".*Styles.*"
   ],
+  
+  /**
+  * Nodejs Project Settings
+  */
+  "npm.packageManager": "pnpm",
   "eslint.enable": true,
   "eslint.run": "onSave",
   "eslint.validate": [
@@ -68,6 +94,7 @@
     "typescript",
     "typescriptreact"
   ],
+  "javascript.updateImportsOnFileMove.enabled": "never",
   "[typescript][javascript][typescriptreact]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
@@ -80,11 +107,23 @@
       "source.fixAll.eslint": "explicit"
     }
   },
-  "tailwindCSS.classAttributes": [
-    "class",
-    "className",
-    "ngClass",
-    "class:list",
-    ".*Styles.*"
-  ]
+
+  /**
+   * Python Project Settings
+   */
+  "python.envFile": "${workspaceFolder}/.venv",
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.terminal.activateEnvironment": false,
+  "ruff.interpreter": [
+    "${workspaceFolder}/.venv/bin/python"
+  ],
+
+  /**
+   * AI Technology Settings
+   * Copilot: https://code.visualstudio.com/docs/copilot/customization/overview
+   */
+   "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    ".ai": true
+   },
 }
