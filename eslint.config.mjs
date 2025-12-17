@@ -36,6 +36,9 @@ export default defineConfig([
       ecmaVersion: 2020,
       sourceType: 'module',
       globals: globals.browser,
+      parserOptions: {
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
 
     plugins: {
