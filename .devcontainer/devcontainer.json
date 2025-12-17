@@ -17,6 +17,18 @@
     "ghcr.io/devcontainers/features/git:1": {
       "version": "latest",
       "ppa": "false"
+    },
+    "ghcr.io/devcontainers/features/git-lfs:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "installTools": "false"
+    },
+    "ghcr.io/devcontainers/features/rust:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
     }
   },
 
@@ -35,7 +47,11 @@
         "tamasfe.even-better-toml",
         "charliermarsh.ruff",
         "rust-lang.rust-analyzer",
-        "vadimcn.vscode-lldb"
+        "vadimcn.vscode-lldb",
+
+        // Opt out of the following extensions by adding a "-" prefix
+        "-ms-python.vscode-pylance",
+        "-ms-python.autopep8"
       ]
     }
   }
