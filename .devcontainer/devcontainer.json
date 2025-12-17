@@ -1,6 +1,6 @@
 {
   "name": "Development Container",
-  "dockerComposeFile": "docker-compose.yaml",
+  "dockerComposeFile": "compose.yaml",
   "service": "devcontainer",
   "workspaceFolder": "/workspace",
 
@@ -42,7 +42,7 @@
         "redhat.vscode-yaml",
         "ms-python.python", 
         "ms-python.debugpy",
-        "detachhead.basedpyright",
+        "astral-sh.ty",
         "mikestead.dotenv",
         "tamasfe.even-better-toml",
         "charliermarsh.ruff",

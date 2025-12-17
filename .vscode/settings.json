@@ -114,6 +114,7 @@
   "python.envFile": "${workspaceFolder}/.venv",
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
   "python.terminal.activateEnvironment": false,
+  "python.languageServer": "None", // Using Astral TY instead of Pylance
   "ruff.interpreter": [
     "${workspaceFolder}/.venv/bin/python"
   ],
