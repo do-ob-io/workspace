@@ -15,6 +15,12 @@
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 10000,
   "files.autoSaveWhenNoErrors": true,
+  // Mark Rust library sources as read-only
+  "files.readonlyInclude": {
+    "**/.cargo/registry/src/**/*.rs": true,
+    "**/.cargo/git/checkouts/**/*.rs": true,
+    "**/lib/rustlib/src/rust/library/**/*.rs": true,
+  },
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
