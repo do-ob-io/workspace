@@ -6,7 +6,9 @@
 
    // Git settings
   "git.repositoryScanIgnoredFolders": [
-    "node_modules"
+    "node_modules",
+    ".pnpm-store",
+    ".venv"
   ],
   "git.autoRepositoryDetection": true,
   "git.repositoryScanMaxDepth": 2,
@@ -46,7 +48,9 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
-    "**/.DS_Store": true
+    "**/.DS_Store": true,
+    "**/.pnpm-store": true,
+    "**/.venv": true
   },
 
   // Search exclusions
@@ -73,7 +77,9 @@
     "**/package-lock.json": true,
     "**/*.tsbuildinfo": true,
     "**/*.schema.json": true,
-    "**/.pnp.*": true
+    "**/.pnp.*": true,
+    "**/.venv": true,
+    "**/.pnpm-store": true
   },
 
   /**
