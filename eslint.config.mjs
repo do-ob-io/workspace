@@ -57,8 +57,8 @@ export default defineConfig([
     rules: {
       // ESLint rules
       'no-param-reassign': 'error',
-      'no-trailing-spaces': 'error',
       // Stylistic rules
+      '@stylistic/no-trailing-spaces': 'error',
       '@stylistic/semi': [ 'error', 'always' ],
       '@stylistic/quotes': [ 'error', 'single' ],
       '@stylistic/indent': [ 'error', 2 ],
