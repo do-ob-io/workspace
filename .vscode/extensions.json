@@ -7,7 +7,7 @@
     "redhat.vscode-yaml",
     "ms-python.python", 
     "ms-python.debugpy",
-    "detachhead.basedpyright",
+    "astral-sh.ty",
     "mikestead.dotenv",
     "tamasfe.even-better-toml",
     "charliermarsh.ruff",

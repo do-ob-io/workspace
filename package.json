@@ -4,7 +4,7 @@
   "description": "Workspace for do-ob npm NodeJS projects",
   "private": true,
   "engines": {
-    "node": "25.x"
+    "node": "25.2.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

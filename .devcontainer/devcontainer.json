@@ -6,6 +6,8 @@
 
   "remoteUser": "vscode",
 
+  "postCreateCommand": "zsh -i .devcontainer/post-create.sh",
+
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": "true",
@@ -28,7 +30,7 @@
       "version": "latest"
     },
     "ghcr.io/devcontainers/features/node:1": {
-      "version": "lts"
+      "version": "25.2.1"
     }
   },
 
