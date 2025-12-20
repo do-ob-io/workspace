@@ -17,6 +17,10 @@ export default defineConfig({
       plugins: [ [ 'babel-plugin-react-compiler' ] ],
     },
   }) ],
+  server: {
+    host: true,
+    allowedHosts: [ '.localhost' ],
+  },
   test: {
     projects: [ {
       extends: true,

@@ -1,0 +1,44 @@
+{
+  /************************************************************************
+   * NodeJS (ECMAScript) Snippets
+  ************************************************************************/
+  "React Component": {
+    "prefix": "nodejs_react_component",
+    "scope": "typescriptreact",
+    "isFileTemplate": true,
+    "body": [
+      "export type ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Props = Readonly<object>;",
+      "",
+      "export function $1(_: $1Props) {",
+      "\treturn (",
+      "\t\t<div>Rendered $1</div>",
+      "\t);",
+      "}"
+    ],
+    "description": "React component boilerplate"
+  },
+
+  "React Component Vite Stories": {
+    "prefix": "nodejs_react_vite_stories",
+    "body": [
+      "import type { Meta, StoryObj } from '@storybook/react-vite';",
+      "",
+      "import { ${1:${TM_FILENAME_BASE/(.*)\\..+$/${1:/pascalcase}/}} } from './${TM_FILENAME_BASE/(.*)\\..+$/$1/}';",
+      "",
+      "const meta = {",
+      "\tcomponent: $1,",
+      "\tparameters: {",
+      "\t\tlayout: 'padded',",
+      "\t},",
+      "\ttags: [ 'autodocs' ],",
+      "} satisfies Meta<typeof $1>;",
+      "",
+      "export default meta;",
+      "type Story = StoryObj<typeof meta>;",
+      "",
+      "export const Primary: Story = {$0};",
+      ""
+    ],
+    "description": "React Component Stories"
+  },
+}

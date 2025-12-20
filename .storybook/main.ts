@@ -12,7 +12,7 @@ function getAbsolutePath(value: string): any {
 }
 const config: StorybookConfig = {
   'stories': [
-    '../nodejs/**/*.mdx',
+    // '../nodejs/**/*.mdx',
     '../nodejs/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   'addons': [
@@ -21,5 +21,14 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-docs'),
   ],
   'framework': getAbsolutePath('@storybook/react-vite'),
+  async viteFinal(config) {
+    const { mergeConfig } = await import('vite');
+    return mergeConfig(config, {
+      server: {
+        host: true,
+        allowedHosts: [ '.localhost' ],
+      },
+    });
+  },
 };
 export default config;

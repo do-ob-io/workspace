@@ -1,13 +1,16 @@
 # Workspace
+container/**/*
 nodejs/**/*
 python/**/*
-container/**/*
+rust/**/*
+!container/README.md
 !nodejs/README.md
 !python/README.md
-!container/README.md
+!rust/README.md
 package-lock.json
 pnpm-lock.yaml
 uv.lock
+Cargo.lock
 
 # Python
 .venv/
@@ -155,3 +158,8 @@ vite.config.ts.timestamp-*
 
 *storybook.log
 storybook-static
+
+
+# Added by cargo
+
+/target

@@ -111,16 +111,6 @@ export default defineConfig([
             group: 'internal',
             position: 'after',
           },
-          {
-            pattern: '@work-control/**',
-            group: 'internal',
-            position: 'after',
-          },
-          {
-            pattern: '@edctm/**',
-            group: 'internal',
-            position: 'after',
-          },
         ],
         'pathGroupsExcludedImportTypes': [ 'builtin' ],
         'newlines-between': 'always',
@@ -129,6 +119,9 @@ export default defineConfig([
           caseInsensitive: true,
         },
       } ],
+      'import-x/no-unresolved': [
+        'error', { ignore: [ String.raw`\.svg$` ] },
+      ],
     },
   },
 ]);
