@@ -4,7 +4,45 @@ version = "0.1.0"
 description = "Workspace for do-ob uv Python projects"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+  "ruff>=0.14.10",
+  "ty>=0.0.5",
+]
 
 [tool.uv.workspace]
 members = ["python/*"]
+
+[tool.ruff]
+indent-width = 2
+line-length = 120
+respect-gitignore = false
+include = ["python/**/*.py"]
+exclude = [".venv", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "FA100", # Allow future-rewritable-type-annotation
+  "FA102", # Allow future-required-type-annotation
+  "D203", # Ignoring `incorrect-blank-line-before-class` (Conficts with `D211`)
+  "D213", # Ignoring `multi-line-class-docstring` (Conficts with `D212`)
+  "COM812", # The formatter enforces consistent use of trailing commas, making the rule redundant.
+  "PLR0913", # Checks for function definitions that include too many arguments.
+]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"**/test_*.py" = [
+  # at least this three should be fine in tests:
+  "S101", # Allow asserts in tests...
+  "ANN201", # Allow undocumented test functions
+  "PLR2004", # Allow magic value used in comparisons
+  "TID252", # Allow relative imports from test modules
+]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ty.src]
+include = ["python/**/*.py"]
+exclude = [".venv", "build", "dist"]
+respect-ignore-files = false

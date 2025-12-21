@@ -119,6 +119,12 @@
       "source.fixAll.eslint": "explicit"
     }
   },
+  "[json][jsonc]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  },
 
   /**
    * Python Project Settings
@@ -127,9 +133,18 @@
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
   "python.terminal.activateEnvironment": false,
   "python.languageServer": "None", // Using Astral TY instead of Pylance
-  "ruff.interpreter": [
-    "${workspaceFolder}/.venv/bin/python"
-  ],
+  "ruff.interpreter": ["${workspaceFolder}/.venv/bin/python"],
+  "ruff.path": ["${workspaceFolder}/.venv/bin/ruff"],
+  "ty.interpreter": ["${workspaceFolder}/.venv/bin/python"],
+  "ty.path": ["${workspaceFolder}/.venv/bin/ty"],
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
 
   /**
    * AI Technology Settings
