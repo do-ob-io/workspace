@@ -37,6 +37,23 @@
     }
   },
 
+  "forwardPorts": [6006, 3000, 5173],
+
+  "portsAttributes": {
+    "6006":{
+      "label": "Storybook",
+      "onAutoForward": "notify"
+    },
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "notify"
+    },
+    "5173": {
+      "label": "Vite Development",
+      "onAutoForward": "notify"
+    }
+  },
+
   "customizations": {
     "vscode": {
       "extensions": [
