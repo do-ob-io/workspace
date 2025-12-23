@@ -46,9 +46,16 @@ export default defineConfig([
     },
 
     settings: {
-      'import/resolver': {
-        resolver: createTypeScriptImportResolver(),
-      },
+      'import-x/resolver-next': [
+        createTypeScriptImportResolver({
+          project: [
+            'nodejs/*/tsconfig.json',
+            'tsconfig.json',
+          ],
+          noWarnOnMultipleProjects: true,
+          alwaysTryTypes: true,
+        }),
+      ],
       react: {
         version: 'detect',
       },
