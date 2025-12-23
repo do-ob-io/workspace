@@ -22,11 +22,23 @@ const config: StorybookConfig = {
   ],
   'framework': getAbsolutePath('@storybook/react-vite'),
   async viteFinal(config) {
+    const codespaceName = process.env.CODESPACE_NAME;
+    const domain = process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN;
+
+    const isCodespaces = !!(codespaceName && domain);
+
     const { mergeConfig } = await import('vite');
     return mergeConfig(config, {
       server: {
         host: true,
-        allowedHosts: [ '.localhost' ],
+        allowedHosts: isCodespaces ? true : (config.server as any)?.allowedHosts,
+        hmr: isCodespaces
+          ? {
+            protocol: 'wss',
+            host: `${codespaceName}-6006.${domain}`,
+            clientPort: 443,
+          }
+          : (config.server as any)?.hmr,
       },
     });
   },
