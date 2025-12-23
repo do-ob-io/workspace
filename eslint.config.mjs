@@ -13,8 +13,13 @@ import { configs as tseslint } from 'typescript-eslint';
 export default defineConfig([
   globalIgnores([
     '**/.*',
-    '!**/.storybook',
+    '**/dist/',
+    '**/node_modules/',
+    'target/',
     'next-env.d.ts',
+    '!.storybook/',
+    '!.devcontainer/',
+    '!.vscode/',
   ]),
 
   js.configs.recommended,
