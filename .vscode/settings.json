@@ -86,6 +86,7 @@
    * Web Settings
    */
   "html.format.unformatted": "wbr,%",
+  "css.lint.unknownAtRules": "ignore",
   "tailwindCSS.classAttributes": [
     "class",
     "className",

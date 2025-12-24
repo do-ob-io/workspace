@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/** 
+ * Modify to glob directories when issue below is resolved.
+ * https://github.com/tailwindlabs/tailwindcss/issues/15452
+ */
+@source "../nodejs/ui/*.{tsx,jsx}"
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
