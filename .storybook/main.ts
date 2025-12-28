@@ -24,15 +24,17 @@ const config: StorybookConfig = {
   async viteFinal(config) {
     const codespaceName = process.env.CODESPACE_NAME;
     const domain = process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN;
+    const headless = process.env.HEADLESS === 'true';
 
     const isCodespaces = !!(codespaceName && domain);
+    const isCodespacesHeadless = isCodespaces && headless;
 
     const { mergeConfig } = await import('vite');
     return mergeConfig(config, {
       server: {
         host: true,
-        allowedHosts: isCodespaces ? true : (config.server as any)?.allowedHosts,
-        hmr: isCodespaces
+        allowedHosts: isCodespacesHeadless ? true : (config.server as any)?.allowedHosts,
+        hmr: isCodespacesHeadless
           ? {
             protocol: 'wss',
             host: `${codespaceName}-6006.${domain}`,

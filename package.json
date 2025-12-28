@@ -7,8 +7,8 @@
     "node": "25.2.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "BROWSER=none WDS_SOCKET_PORT=0 storybook dev -p 6006",
+    "test": "vitest",
+    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "workspaces": [

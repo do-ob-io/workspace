@@ -46,16 +46,22 @@ export default defineConfig({
           }) ],
         test: {
           name: 'storybook',
+          env: {
+            HEADLESS: 'true',
+          },
           browser: {
             enabled: true,
             headless: true,
-            provider: playwright({}),
+            provider: playwright({
+              launchOptions: {
+                headless: true,
+              },
+            }),
             instances: [ {
               browser: 'chromium',
             } ],
           },
           setupFiles: [ '.storybook/vitest.setup.ts' ],
-          include: [ 'nodejs/**/*.stories.ts' ],
         },
       },
     ],
