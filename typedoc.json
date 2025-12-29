@@ -1,0 +1,13 @@
+{
+    "$schema": "https://typedoc.org/schema.json",
+    "plugin": ["typedoc-plugin-markdown"],
+    "entryPointStrategy": "packages",
+    "entryPoints": ["nodejs/*"],
+    "tsconfig": "./tsconfig.typedoc.json",
+    "packageOptions": {
+        "entryPoints": ["./src/*/index.ts"],
+        "alwaysCreateEntryPointModule": true,
+        "tsconfig": "./tsconfig.build.json"
+    },
+    "out": "./docs"
+}

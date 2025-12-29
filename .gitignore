@@ -12,6 +12,9 @@ pnpm-lock.yaml
 uv.lock
 Cargo.lock
 
+# Documentation
+docs/
+
 # Python
 .venv/
 

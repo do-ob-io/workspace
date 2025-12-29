@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"]
+    }
+  },
+  "include": [
+    "nodejs/*/src/**/*.ts",
+    "nodejs/*/src/**/*.tsx"
+  ],
+  "exclude": [
+    "**/.storybook/**",
+    "**/*.stories.*",
+    "**/*.story.*",
+    "**/*.test.*",
+    "node_modules",
+    "dist",
+    "build"
+  ]
+}
