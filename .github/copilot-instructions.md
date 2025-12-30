@@ -69,9 +69,9 @@ All **public exports** must be fully documented for TypeDoc.
 - **Rust**: Standard Rust 2024 edition formatting
 
 ### React & UI Patterns
-- Uses **Base UI** (@base-ui/react) as primitive component foundation
-- **class-variance-authority** (cva) for variant-based styling (see [button.tsx](nodejs/ui/src/base/button.tsx))
-- `cn()` utility ([utils.ts](nodejs/ui/src/utils.ts)) combines clsx + tailwind-merge for className composition
+- **React 19+** with functional components
+- React component should be pure functions, no class components
+- Hooks for state, effects, and behaviors
 - Tailwind v4 with @tailwindcss/vite plugin integration
 - **Storybook** at root for component development/testing
 
