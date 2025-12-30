@@ -23,6 +23,30 @@ The workspace uses **language-specific package managers** (`pnpm`, `uv`, `cargo`
 - Each submodule has dedicated `index.ts` re-exporting from feature folder
 - Example: `@do-ob/core/strings` → `nodejs/core/src/strings/index.ts`
 
+## Node.js TypeDoc Rules
+
+All **public exports** must be fully documented for TypeDoc.
+
+**Required:**
+- A clear top-level description explaining behavior and purpose
+- `@param` documentation for **every** function argument
+- `@returns` describing the return value
+- `@throws` when errors are possible
+- `@example` for non-trivial or reusable utilities
+
+**Types & Interfaces:**
+- Require a top-level description
+- Document non-obvious fields
+
+**Style:**
+- Clear, concise English
+- Describe behavior, not implementation
+- Do not rely on type names alone
+
+**Enforcement:**
+- Undocumented public APIs are considered incomplete
+- Tests passing is not sufficient—documentation is mandatory
+
 ### TypeScript Configuration Strategy
 - **Root tsconfig.json** uses project references (tsconfig.app.json, tsconfig.node.json, tsconfig.lib.json)
 - **Package tsconfig.build.json** extends package tsconfig.json but excludes `*.test.*` files
