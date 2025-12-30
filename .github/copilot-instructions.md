@@ -12,6 +12,11 @@ The workspace uses **language-specific package managers** (`pnpm`, `uv`, `cargo`
 
 ## Key Workspace Conventions
 
+### File naming conventions
+- **Node.js/TypeScript**: file names use `kebab-case` (e.g. `my-component.tsx`)
+- **Python**: file names use `snake_case` (e.g. `my_module.py`)
+- **Rust**: file names use `snake_case` (e.g. `my_module.rs`)
+
 ### Package Structure & Exports
 - Node.js packages follow **subpath exports pattern** in package.json (see `@do-ob/core` and `@do-ob/ui`)
 - Export main module at `.` and feature submodules like `./strings`, `./base`
