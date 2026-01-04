@@ -107,6 +107,7 @@
     "typescript",
     "typescriptreact"
   ],
+  "tailwindCSS.classFunctions": ["cva", "cx", "clsx"],
   "javascript.updateImportsOnFileMove.enabled": "never",
   "[typescript][javascript][typescriptreact]": {
     "editor.codeActionsOnSave": {

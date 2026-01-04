@@ -54,10 +54,12 @@ All **public exports** must be fully documented for TypeDoc.
 
 ### Testing & Development Workflow
 - **Vitest with multi-project setup** configured in root vite.config.ts:
-  - `node` project: runs `nodejs/**/*.test.ts` in Node environment
-  - `storybook` project: runs Storybook tests in browser with Playwright
+  - `node` project: runs `nodejs/*/src/**/*.test.ts` in Node environment
+  - `storybook` project: runs `nodejs/*/src/**/*.stories.tsx` Storybook tests in browser with Playwright
 - Run all tests: `pnpm test` (executes vitest from root)
 - Individual package tests: `cd nodejs/core && pnpm test`
+- Tests must be added for new features/bug fixes
+- Test files are colocated with source files, suffixed with `.test.ts`, `.test.tsx`, or `.stories.tsx`
 
 ### Code Style & Linting
 - **ESLint flat config** (eslint.config.mjs) with strict stylistic rules:
@@ -89,6 +91,7 @@ All **public exports** must be fully documented for TypeDoc.
 ## When Creating New Node.js Files
 
 - **TypeScript files**: Include in appropriate tsconfig, use `import type` for types
+- **Index files**: Only exports features within the folder and is documented as a module
 - **React components**: Use Base UI primitives, cva for variants, export props type
 - **Node Tests**: Suffix with `.test.ts` or `.test.tsx`, auto-excluded from build
 - **React Tests**: Use Storybook + Playwright for UI components
