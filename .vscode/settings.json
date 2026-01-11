@@ -57,8 +57,12 @@
   "search.exclude": {
     "**/.git": true,
     "**/.yarn": true,
+    "**/.next": true,
+    "**/.tmp": true,
     "**/node_modules": true,
+    "**/*.egg-info": true,
     "**/bower_components": true,
+    "**/coverage": true,
     "**/*.code-search": true,
     "**/.dist": true,
     "**/.types": true,
@@ -70,17 +74,23 @@
     "**/out": true,
     "**/pkg": true,
     "**/srv": true,
+    "**/target": true,
+    "**/.mock": true,
     "**/.angular": true,
     "**/.vscode": true,
     "**/*.lock": true,
     "**/*lock.yaml": true,
     "**/package-lock.json": true,
+    "**/pnpm-lock.yaml": true,
     "**/*.tsbuildinfo": true,
     "**/*.schema.json": true,
     "**/.pnp.*": true,
     "**/.venv": true,
-    "**/.pnpm-store": true
+    "**/.pnpm-store": true,
+    "**/.ruff_cache": true,
+    "**/__pycache__": true
   },
+  "search.useIgnoreFiles": false,
 
   /**
    * Web Settings
