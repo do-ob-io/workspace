@@ -3,6 +3,10 @@ container/**/*
 nodejs/**/*
 python/**/*
 rust/**/*
+!container/AGENTS.md
+!nodejs/AGENTS.md
+!python/AGENTS.md
+!rust/AGENTS.md
 !container/README.md
 !nodejs/README.md
 !python/README.md
@@ -62,6 +66,9 @@ node_modules/
 jspm_packages/
 .pnpm-store/
 
+# Python cache
+__pycache__/
+
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
@@ -89,6 +96,7 @@ web_modules/
 # dotenv environment variable files
 .env
 .env.*
+*.env
 !.env.example
 
 # parcel-bundler cache (https://parceljs.org/)

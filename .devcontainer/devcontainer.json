@@ -7,6 +7,7 @@
   "remoteUser": "vscode",
 
   "postCreateCommand": "zsh -i .devcontainer/post-create.sh",
+  "postStartCommand": "zsh -i .devcontainer/post-start.sh",
 
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {

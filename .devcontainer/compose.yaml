@@ -4,6 +4,10 @@ services:
       context: .
       dockerfile: Containerfile
     image: do-ob_devcontainer:latest
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - NODE_ENV=${ENVIRONMENT:-development}
+      - SIGNING_KEY=${SIGNING_KEY}
     volumes:
       - ..:/workspace:cached
     working_dir: /workspace

@@ -5,6 +5,7 @@ description = "Workspace for do-ob uv Python projects"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+  "pytest>=9.0.2",
   "ruff>=0.14.10",
   "ty>=0.0.5",
 ]
@@ -46,3 +47,7 @@ docstring-code-format = true
 include = ["python/**/*.py"]
 exclude = [".venv", "build", "dist"]
 respect-ignore-files = false
+
+[tool.pytest]
+minversion = "9.0"
+addopts = ["--import-mode=importlib", "-ra", "-q"]
