@@ -1,14 +1,21 @@
-# do-ob Workspace
+# do-ob workspace
 
-- Reference any relevant nested `AGENT.md` files along the working directory for files being worked on.
+- If it exists, reference the `AGENTS.md` file for project specific instructions.
 
-## Workspace Overview
+## Workspace overview
 - Projects are organized into folders by their primary language: `python/`, `nodejs/`, `rust/`.
 - Projects can be applications, libraries, or tools.
 - `container/` projects use `docker`.
 - `nodejs/` projects use `pnpm`.
 - `python/` projects use `uv`.
 - `rust/` projects use `cargo`.
+
+### NodeJS shared project libraries
+- `nodejs/core/`: Shared common utilities.
+- `nodejs/hook/`: Shared React hooks.
+- `nodejs/ui/`: Shared user interface React components.
+- Create new common features for reuse across multiple NodeJS projects.
+- If a shared package is missing, clone it into the `nodejs` folder from GitHub `git clone git@github.com:do-ob-io/<project-name>.git`
 
 ## Quality instructions
 - Run quality checks in the following order:

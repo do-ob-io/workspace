@@ -64,8 +64,9 @@ export function MyComponent({ prop1, prop2 }: MyComponentProps) {
 ### Example story file
 
 ```tsx
-import type { Meta, StoryObj } from '@storybook/react-vite'; // `@storybook/nextjs-vite` in Next.js projects
+import type { Meta, StoryObj } from '@storybook/react-vite'; // used for all projects regardless of framework
 import { expect, fn, screen } from 'storybook/test';
+import { MyComponent } from './my-component';
 
 const meta = {
   component: MyComponent,

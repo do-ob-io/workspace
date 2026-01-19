@@ -20,4 +20,20 @@ npm install -g eslint typescript vitest @go-task/cli
 # ------------------------------------------------------------------------------
 pnpm install
 
+# Configure subuid/subgid for rootless Podman (if not already configured)
+if ! grep -q "^vscode:" /etc/subuid 2>/dev/null; then
+    sudo sh -c 'echo "vscode:100000:65536" >> /etc/subuid'
+    sudo sh -c 'echo "vscode:100000:65536" >> /etc/subgid'
+fi
+
+# Configure Podman storage for rootless operation
+mkdir -p ~/.config/containers
+cat > ~/.config/containers/storage.conf << 'EOF'
+[storage]
+driver = "overlay"
+
+[storage.options.overlay]
+mount_program = "/usr/bin/fuse-overlayfs"
+EOF
+
 echo "============================== POST CREATE COMPLETE ================================="

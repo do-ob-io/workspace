@@ -1,6 +1,25 @@
 FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
-RUN apt-get update && \
-apt-get install -y gnupg2
-
 ENV DEBIAN_FRONTEND=noninteractive
+
+# Install Podman and dependencies for rootless operation
+RUN apt-get update && \
+    apt-get install -y \
+    gnupg2 \
+    podman \
+    fuse-overlayfs \
+    uidmap \
+    slirp4netns \
+    && rm -rf /var/lib/apt/lists/*
+
+# Configure subuid and subgid for the vscode user (default devcontainer user)
+RUN echo "vscode:100000:65536" >> /etc/subuid && \
+    echo "vscode:100000:65536" >> /etc/subgid
+
+# Configure Podman storage for rootless operation
+RUN mkdir -p /home/vscode/.config/containers && \
+    echo '[storage]' > /home/vscode/.config/containers/storage.conf && \
+    echo 'driver = "overlay"' >> /home/vscode/.config/containers/storage.conf && \
+    echo '[storage.options.overlay]' >> /home/vscode/.config/containers/storage.conf && \
+    echo 'mount_program = "/usr/bin/fuse-overlayfs"' >> /home/vscode/.config/containers/storage.conf && \
+    chown -R vscode:vscode /home/vscode/.config

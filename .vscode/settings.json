@@ -166,7 +166,8 @@
    */
    "chat.useAgentsMdFile": true,
    "chat.useNestedAgentsMdFiles": true,
+   "chat.agent.maxRequests": 64,
    "chat.instructionsFilesLocations": {
     ".code": true
-   }
+   },
 }

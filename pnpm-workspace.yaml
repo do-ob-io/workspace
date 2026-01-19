@@ -1,2 +1,5 @@
 packages:
   - 'nodejs/*'
+ignoredBuiltDependencies:
+  - sharp
+  - unrs-resolver
