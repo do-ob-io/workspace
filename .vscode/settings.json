@@ -166,4 +166,7 @@
    */
    "chat.useAgentsMdFile": true,
    "chat.useNestedAgentsMdFiles": true,
+   "chat.instructionsFilesLocations": {
+    ".code": true
+   }
 }

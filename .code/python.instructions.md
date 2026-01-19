@@ -1,3 +1,7 @@
+---
+applyTo: 'python/**/*'
+---
+
 # Python projects
 
 ## File naming conventions
