@@ -5,9 +5,8 @@
     "entryPoints": ["nodejs/*"],
     "tsconfig": "./tsconfig.typedoc.json",
     "packageOptions": {
-        "entryPoints": ["./src/*/index.ts"],
         "alwaysCreateEntryPointModule": true,
-        "tsconfig": "./tsconfig.build.json"
+        "tsconfig": "./tsconfig.lib.json"
     },
     "out": "./docs"
 }
