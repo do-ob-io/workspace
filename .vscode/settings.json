@@ -50,7 +50,10 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/.pnpm-store": true,
-    "**/.venv": true
+    "**/.venv": true,
+    "**/.pytest_cache": true,
+    "**/node_modules": true,
+    "**/.next": true
   },
 
   // Search exclusions
@@ -88,7 +91,8 @@
     "**/.venv": true,
     "**/.pnpm-store": true,
     "**/.ruff_cache": true,
-    "**/__pycache__": true
+    "**/__pycache__": true,
+    "**/pytest_cache": true
   },
   "search.useIgnoreFiles": false,
 
@@ -165,9 +169,13 @@
    * Copilot: https://code.visualstudio.com/docs/copilot/customization/overview
    */
    "chat.useAgentsMdFile": true,
+   "chat.useAgentSkills": true,
    "chat.useNestedAgentsMdFiles": true,
    "chat.agent.maxRequests": 64,
    "chat.instructionsFilesLocations": {
-    ".code": true
-   },
+     ".code": true
+    },
+    "chat.agentSkillsLocations": {
+     ".code/skills": true,
+    },
 }

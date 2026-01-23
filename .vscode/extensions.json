@@ -1,17 +1,5 @@
 {
   "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "bradlc.vscode-tailwindcss",
-    "vitest.explorer",
-    "redhat.vscode-yaml",
-    "ms-python.python", 
-    "ms-python.debugpy",
-    "astral-sh.ty",
-    "mikestead.dotenv",
-    "tamasfe.even-better-toml",
-    "charliermarsh.ruff",
-    "rust-lang.rust-analyzer",
-    "vadimcn.vscode-lldb"
+    "ms-vscode-remote.remote-containers"
   ]
 }
