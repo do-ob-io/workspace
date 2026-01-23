@@ -172,6 +172,9 @@
    "chat.useAgentSkills": true,
    "chat.useNestedAgentsMdFiles": true,
    "chat.agent.maxRequests": 64,
+   "chat.agentFilesLocations": {
+    ".code/agents": true
+   },
    "chat.instructionsFilesLocations": {
      ".code": true
     },
