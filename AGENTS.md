@@ -2,6 +2,10 @@
 
 - If it exists, reference the `AGENTS.md` file for project specific instructions.
 
+# Rules (CRITICAL)
+- Only use the quality tools provided in the agent instructions
+- Never run background processes like developerment servers
+
 ## Workspace overview
 - Projects are organized into folders by their primary language: `python/`, `nodejs/`, `rust/`.
 - Projects can be applications, libraries, or tools.
