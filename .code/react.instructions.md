@@ -1,5 +1,5 @@
 ---
-applyTo: 'nodejs/**/*.tsx'
+applyTo: 'placeholder/**/*'
 ---
 
 # React Instructions

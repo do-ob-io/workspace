@@ -1,5 +1,5 @@
 ---
-applyTo: 'nodejs/**/*'
+applyTo: 'placeholder/**/*'
 ---
 
 # NodeJS projects

@@ -1,5 +1,5 @@
 ---
-applyTo: 'python/**/*'
+applyTo: 'placeholder/**/*'
 ---
 
 # Python projects

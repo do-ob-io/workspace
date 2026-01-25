@@ -31,8 +31,10 @@
 ## NodeJS Specific Guidance (CRITICAL)
 - Always put new source code in their own directory with the same name as the source file
 - Always colocate related files within the same directory (e.g., tests, styles, types)
-- Always create an `index.ts` file in each new directory that exports the public APIs
+- Always create or update the `index.ts` file in each directory that exports the public APIs
 - React components must export a single component per file
+- Create storybook stories for React components
+- Always create or update unit tests (`*.stories.{ts,tsx}` for components and `*.test.{ts,tsx}` all others)
 
 ### NodeJS shared project libraries (IMPORTANT)
 - `nodejs/core/`: Shared common utilities

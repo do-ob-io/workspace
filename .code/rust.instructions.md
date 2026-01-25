@@ -1,5 +1,5 @@
 ---
-applyTo: 'rust/**/*'
+applyTo: 'placeholder/**/*'
 ---
 
 # Rust projects
