@@ -1,1 +1,142 @@
+# ==================================
+# Docker Build Ignore File
+# ==================================
+
+# ----------------------------------
+# Version Control
+# ----------------------------------
+**/.git
+**/.gitignore
+**/.gitattributes
+
+# ----------------------------------
+# Documentation & AI Agent Instructions
+# ----------------------------------
+**/AGENTS.md
+**/README.md
+**/CHANGELOG.md
+**/LICENSE
+**/docs
+**/.code
+
+# ----------------------------------
+# IDE / Editor Settings
+# ----------------------------------
+**/.vscode
+**/.idea
+**/.editorconfig
+**/*.code-search
+**/*.code-workspace
+
+# ----------------------------------
+# OS Generated Files
+# ----------------------------------
+**/.DS_Store
+**/Thumbs.db
+
+# ----------------------------------
+# Environment & Configuration
+# ----------------------------------
+**/.env
+**/.env.*
+!**/.env.example
+**/.nvmrc
+
+# ----------------------------------
+# Node.js / JavaScript / TypeScript
+# ----------------------------------
 **/node_modules
+**/bower_components
+**/.yarn
+**/.pnp.*
+**/.pnpm-store
+**/.npm
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+
+# TypeScript build info
+**/*.tsbuildinfo
+**/*.schema.json
+
+# Framework specific
+**/.next
+**/.nuxt
+**/.angular
+**/storybook-static
+
+# ----------------------------------
+# Python
+# ----------------------------------
+**/__pycache__
+**/*.py[cod]
+**/*$py.class
+**/*.egg-info
+**/.eggs
+**/.venv
+**/venv
+**/.ruff_cache
+**/.mypy_cache
+**/.pytest_cache
+**/pytest_cache
+**/htmlcov
+**/.tox
+**/.nox
+
+# ----------------------------------
+# Rust
+# ----------------------------------
+**/target
+
+# ----------------------------------
+# Build Outputs & Artifacts
+# ----------------------------------
+**/dist
+**/out
+**/build
+**/pkg
+**/srv
+**/.dist
+**/.out
+**/.pkg
+**/.srv
+**/.web
+**/.types
+
+# ----------------------------------
+# Testing & Coverage
+# ----------------------------------
+**/coverage
+**/.nyc_output
+**/.mock
+**/*.test.js
+**/*.test.ts
+**/*.spec.js
+**/*.spec.ts
+
+# ----------------------------------
+# Temporary & Cache Files
+# ----------------------------------
+**/.tmp
+**/tmp
+**/.cache
+**/.turbo
+**/*.log
+**/*.swp
+**/*.swo
+*~
+
+# ----------------------------------
+# Container & CI/CD
+# ----------------------------------
+**/Dockerfile*
+**/Containerfile*
+**/docker-compose*.yml
+**/docker-compose*.yaml
+**/.dockerignore
+**/.github
+**/.gitlab-ci.yml
+**/.circleci
+**/Jenkinsfile
+**/libpod

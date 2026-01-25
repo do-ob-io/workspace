@@ -1,54 +1,49 @@
 ARG NODE_VERSION=25
 ARG PORT=8080
 ARG PROJECT
+ARG PROJECT_PATH=nodejs/${PROJECT}
 
-FROM node:${NODE_VERSION}-alpine AS builder
+FROM node:${NODE_VERSION} AS builder
 
-USER node
-WORKDIR /home/node
+# Re-declare build args for this stage
+ARG PROJECT
+ARG PROJECT_PATH=nodejs/${PROJECT}
 
+# Install pnpm and set up environment
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
-
-COPY ./nodejs ./nodejs
-COPY ./src ./src
-
-COPY ./eslint.config.mjs .
-COPY ./next.config.ts .
-COPY ./package.json .
-COPY ./postcss.config.mjs .
-COPY ./tsconfig.json .
-COPY ./tsconfig.build.json .
-
-# Disable telemetry during the build.
-# https://nextjs.org/telemetry
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# install
+RUN npm i -g pnpm
+
+WORKDIR /app
+
+# Copy workspace files and install dependencies
+COPY --chown=node:node . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
-# build
-RUN pnpm -F ${PROJECT} build
+# Build all projects from workspace root (required for interdependencies)
+RUN pnpm run -r build
 
-# Stage 2
-FROM node:${NODE_VERSION}-slim
+# Production stage
+FROM node:${NODE_VERSION}-alpine
 
+ARG PORT=8080
+ARG PROJECT
+ARG PROJECT_PATH=nodejs/${PROJECT}
+
+WORKDIR /app
 USER node
-WORKDIR /home/node
 
 ENV PORT=${PORT}
+ENV NODE_ENV=production
+ENV PROJECT_PATH=${PROJECT_PATH}
 
-COPY --from=builder /home/node/public ./public
-
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder /home/node/.next/standalone ./
-COPY --from=builder /home/node/.next/static ./.next/static
-
-
-RUN id node
+# Copy built application from standalone output
+COPY --from=builder --chown=node:node /app/${PROJECT_PATH}/.next/standalone ./
+COPY --from=builder --chown=node:node /app/${PROJECT_PATH}/.next/static ./${PROJECT_PATH}/.next/static
+COPY --from=builder --chown=node:node /app/${PROJECT_PATH}/public ./${PROJECT_PATH}/public
 
 EXPOSE ${PORT}
 
-CMD ["node", "server.js"]
+CMD ["sh", "-c", "node ${PROJECT_PATH}/server.js"]
