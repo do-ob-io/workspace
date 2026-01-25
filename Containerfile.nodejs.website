@@ -1,0 +1,54 @@
+ARG NODE_VERSION=25
+ARG PORT=8080
+ARG PROJECT
+
+FROM node:${NODE_VERSION}-alpine AS builder
+
+USER node
+WORKDIR /home/node
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+COPY ./nodejs ./nodejs
+COPY ./src ./src
+
+COPY ./eslint.config.mjs .
+COPY ./next.config.ts .
+COPY ./package.json .
+COPY ./postcss.config.mjs .
+COPY ./tsconfig.json .
+COPY ./tsconfig.build.json .
+
+# Disable telemetry during the build.
+# https://nextjs.org/telemetry
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# install
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+
+# build
+RUN pnpm -F ${PROJECT} build
+
+# Stage 2
+FROM node:${NODE_VERSION}-slim
+
+USER node
+WORKDIR /home/node
+
+ENV PORT=${PORT}
+
+COPY --from=builder /home/node/public ./public
+
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder /home/node/.next/standalone ./
+COPY --from=builder /home/node/.next/static ./.next/static
+
+
+RUN id node
+
+EXPOSE ${PORT}
+
+CMD ["node", "server.js"]
