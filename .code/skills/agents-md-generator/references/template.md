@@ -12,6 +12,7 @@ Use this template when generating AGENTS.md files. Replace placeholders with ana
 - **Typecheck**: `<command>`
 - **Lint**: `<command>`
 - **Test**: `<command>`
+- **Build**: `<command>`
 
 ## Structure
 

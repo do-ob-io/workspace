@@ -1,6 +1,6 @@
 ---
 name: storybook-react-testing
-description: Write unit tests for React components using Storybook with play functions. Use when creating or updating *.stories.tsx files, writing component interaction tests, or setting up visual and behavioral tests for React components. Triggers on requests like "create story", "add storybook test", "write play function", "test this component", or when working with *.stories.tsx files.
+description: Write unit tests for React components using Storybook with play functions. Use when creating or updating *.stories.tsx files, writing component interaction tests, or setting up visual and behavioral tests for React components. Triggers when working with *.stories.tsx files or on requests like "react quality check", "react unit test", "create story", "add storybook test", "write play function", "test this component".
 ---
 
 # Storybook React Testing

@@ -12,7 +12,7 @@ Generate structured AGENTS.md files by analyzing a project's tools, dependencies
 1. **Identify project root** — Locate `package.json`, `pyproject.toml`, `Cargo.toml`, or similar manifest
 2. **Analyze dependencies** — Extract framework, testing, linting, and build tools from manifest
 3. **Scan structure** — Map `src/`, `lib/`, `test/`, and other key directories
-4. **Detect quality tools** — Identify typecheck, lint, and test commands
+4. **Detect quality tools** — Identify typecheck, lint, test, and build commands
 5. **Generate AGENTS.md** — Output using the template format
 
 ## Analysis Checklist
@@ -64,6 +64,7 @@ Use the following structure exactly:
 - **Typecheck**: `<command>` — <brief note if needed>
 - **Lint**: `<command>` — <brief note if needed>
 - **Test**: `<command>` — <brief note if needed>
+- **Build**: `<command>` — <brief note if needed> (if applicable)
 
 ## Structure
 
@@ -109,6 +110,7 @@ Lightweight data transformation utilities for parsing, validating, and formattin
 - **Typecheck**: `tsc --noEmit`
 - **Lint**: `eslint --fix src/`
 - **Test**: `vitest run`
+- **Build**: `pnpm build`
 
 ## Structure
 

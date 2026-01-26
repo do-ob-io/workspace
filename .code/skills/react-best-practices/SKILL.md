@@ -1,6 +1,6 @@
 ---
 name: react-best-practices
-description: React 19+ performance optimization guidelines for modern React applications without framework dependencies. This skill should be used when writing, reviewing, or refactoring React code to ensure optimal performance patterns. Triggers on tasks involving React components, hooks, data fetching, bundle optimization, or performance improvements.
+description: React 19+ performance optimization guidelines for modern React applications without framework dependencies. This skill should be used when writing, reviewing, or refactoring React code to ensure optimal performance patterns. Triggers when working in *.tsx files on tasks involving React components, hooks, data fetching, bundle optimization, or performance improvements.
 license: MIT
 metadata:
   author: do-ob

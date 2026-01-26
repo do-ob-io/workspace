@@ -7,7 +7,7 @@
   1. **Planning**: Asking questions to clarify requirements and constraints, listing tasks, and creating a plan
   2. **Implementing**: Writing organized code to implement the feature according to the plan
   3. **Testing**: Writing unit tests to verify the feature works as intended
-  4. **Quality Checking**: Running typechecks, linters, and tests to ensure code quality
+  4. **Quality Checking**: Running typechecks, linters, tests, and build to ensure code quality
   5. **Completion**: Output of clear and concise summary of the work done
 - Only use the quality tools provided in the agent instructions after finishing development tasks
 - Never run background processes like development servers
@@ -26,6 +26,7 @@
   1. Typecheck
   2. Lint
   3. Test
+  4. Build (if applicable)
 - Before completing an update or change, run all quality checks in a project
 - Path the quality tools at the appropriate depth given the task (workspace root, project root, specific file)
 
@@ -57,6 +58,7 @@
 | Typechecking | `tsc --noEmit` | TypeScript Compiler | `cd` to specific project |
 | Linting | `eslint --fix`, `eslint --fix <path-to-file>` | Linter and auto-fixer | Use from workspace root or specific project |
 | Testing | `vitest run`, `vitest run <path-to-file>` | Testing framework | Use from workspace root or specific project |
+| Build | `pnpm build` | Build the project | `cd` to specific project |
 | Documentation | `pnpm typedoc` | TypeDoc documentation generator | Use from workspace root |
 
 ### NodeJS documentation (CRITICAL)
