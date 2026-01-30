@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
 
+import { CanvasDecorator } from './decorators';
 import './globals.css';
 
 const preview: Preview = {
@@ -18,6 +19,8 @@ const preview: Preview = {
       test: 'todo',
     },
   },
+
+  decorators: [ CanvasDecorator ],
 };
 
 export default preview;

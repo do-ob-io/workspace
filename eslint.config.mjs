@@ -33,7 +33,6 @@ export default defineConfig([
   eslintPluginUnicorn.configs.recommended,
   importX.flatConfigs.recommended,
   importX.flatConfigs.typescript,
-
   {
     files: [ '**/*.{js,jsx,mjs,ts,tsx}' ],
 
