@@ -1,10 +1,12 @@
 import type { GizmoHelperProps , GridProps } from '@react-three/drei';
-import { GizmoViewport, GizmoHelper, OrbitControls, Grid, Environment  } from '@react-three/drei';
+import { GizmoViewport, GizmoHelper, OrbitControls, PointerLockControls, Grid, Environment  } from '@react-three/drei';
 import type { CameraProps } from '@react-three/fiber';
 import { Canvas } from '@react-three/fiber';
 import type { Decorator } from '@storybook/react-vite';
 import type { ComponentProps } from 'react';
 import { useMemo } from 'react';
+
+type ControlsType = 'orbit' | 'first-person';
 
 const gridSize: GridProps['args'] = [ 10.5, 10.5 ];
 
@@ -40,18 +42,28 @@ const CanvasActiveDecorator: Decorator = (Story, context) => {
 
   const orbitTarget = useMemo(() => [ 0, 0, 0 ] as [ number, number, number ], []);
 
+  const controlsType = useMemo<ControlsType>(
+    () => threeSettings.controls ?? 'orbit',
+    [ threeSettings.controls ],
+  );
+
   return (
     <div className="relative h-full">
       <div className="absolute inset-0">
         <Canvas camera={camera}>
           <color attach="background" args={[ threeSettings.backgroundColor ?? '#ffffff' ]} />
-          <OrbitControls
-            enablePan={true}
-            enableZoom={true}
-            enableRotate={true}
-            makeDefault
-            target={orbitTarget}
-          />
+          {controlsType === 'orbit' && (
+            <OrbitControls
+              enablePan={true}
+              enableZoom={true}
+              enableRotate={true}
+              makeDefault
+              target={orbitTarget}
+            />
+          )}
+          {controlsType === 'first-person' && (
+            <PointerLockControls makeDefault />
+          )}
           <GizmoHelper
             alignment="bottom-right"
             margin={margin}
