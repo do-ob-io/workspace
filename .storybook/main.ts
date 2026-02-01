@@ -1,7 +1,23 @@
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import type { StorybookConfig } from '@storybook/react-vite';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const nodejsDir = path.resolve(__dirname, '../nodejs');
+
+/**
+ * Declares an array that contains all the paths for `public` folders under the
+ * `../nodejs/<project>` directory. Paths are relative to this file.
+ */
+const staticDirs = fs.readdirSync(nodejsDir)
+  .filter((project) => {
+    const publicPath = path.join(nodejsDir, project, 'public');
+    return fs.existsSync(publicPath) && fs.statSync(publicPath).isDirectory();
+  })
+  .map((project) => `../nodejs/${project}/public`);
+
 
 /**
 * This function is used to resolve the absolute path of a package.
@@ -15,6 +31,7 @@ const config: StorybookConfig = {
     // '../nodejs/**/*.mdx',
     '../nodejs/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
+  'staticDirs': staticDirs,
   'addons': [
     getAbsolutePath('@storybook/addon-vitest'),
     getAbsolutePath('@storybook/addon-a11y'),

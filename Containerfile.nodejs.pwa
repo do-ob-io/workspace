@@ -1,0 +1,42 @@
+ARG NODE_VERSION=25
+ARG PORT=8080
+ARG PROJECT
+ARG PROJECT_PATH=nodejs/${PROJECT}
+
+FROM node:${NODE_VERSION} AS builder
+
+# Re-declare build args for this stage
+ARG PROJECT
+ARG PROJECT_PATH=nodejs/${PROJECT}
+
+# Install pnpm and set up environment
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
+RUN npm i -g pnpm
+
+WORKDIR /app
+
+# Copy workspace files and install dependencies
+COPY . .
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+
+# Build all projects from workspace root (required for interdependencies)
+RUN pnpm run -r build
+
+# Production stage - minimal static file server
+FROM busybox:stable-musl
+
+ARG PORT=8080
+ENV PORT=${PORT}
+ARG PROJECT
+ARG PROJECT_PATH=nodejs/${PROJECT}
+
+WORKDIR /app
+
+# Copy built static files only
+COPY --from=builder /app/${PROJECT_PATH}/dist ./
+
+EXPOSE ${PORT}
+
+CMD ["sh", "-c", "httpd -f -p $PORT -h /app"]
