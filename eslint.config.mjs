@@ -16,6 +16,7 @@ export default defineConfig([
     '**/dist/',
     '**/node_modules/',
     'target/',
+    '.code/',
     'next-env.d.ts',
     '!.storybook/',
     '!.devcontainer/',
