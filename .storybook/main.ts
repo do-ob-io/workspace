@@ -18,6 +18,52 @@ const staticDirs = fs.readdirSync(nodejsDir)
   })
   .map((project) => `../nodejs/${project}/public`);
 
+const resolveExtensions = [ '.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs' ];
+
+function resolveProjectSrcImport(project: string, request: string): string | null {
+  const cleanedRequest = request.replace(/^[@]\//, '');
+  const extension = path.extname(cleanedRequest);
+  const extensionlessRequest = extension
+    ? cleanedRequest.slice(0, cleanedRequest.length - extension.length)
+    : cleanedRequest;
+
+  const candidates = [
+    path.resolve(nodejsDir, project, 'src', cleanedRequest),
+    path.resolve(nodejsDir, project, 'src', extensionlessRequest),
+    ...resolveExtensions.map((item) => path.resolve(nodejsDir, project, 'src', `${extensionlessRequest}${item}`)),
+    ...resolveExtensions.map((item) => path.resolve(nodejsDir, project, 'src', cleanedRequest, `index${item}`)),
+    ...resolveExtensions.map((item) => path.resolve(nodejsDir, project, 'src', extensionlessRequest, `index${item}`)),
+  ];
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) {
+      return candidate;
+    }
+  }
+
+  return null;
+}
+
+function createWorkspaceAtAliasPlugin() {
+  return {
+    name: 'workspace-project-at-alias-resolver',
+    resolveId(source: string, importer?: string) {
+      if (!source.startsWith('@/') || !importer) {
+        return null;
+      }
+
+      const normalizedImporter = importer.split('?')[0].replaceAll('\\', '/');
+      const match = normalizedImporter.match(/\/nodejs\/([^/]+)\//);
+
+      if (!match) {
+        return null;
+      }
+
+      return resolveProjectSrcImport(match[1], source);
+    },
+  };
+}
+
 
 /**
 * This function is used to resolve the absolute path of a package.
@@ -48,6 +94,7 @@ const config: StorybookConfig = {
 
     const { mergeConfig } = await import('vite');
     return mergeConfig(config, {
+      plugins: [ createWorkspaceAtAliasPlugin() ],
       server: {
         host: true,
         allowedHosts: isCodespacesHeadless ? true : (config.server as any)?.allowedHosts,

@@ -8,6 +8,7 @@ services:
       - ENVIRONMENT=${ENVIRONMENT:-development}
       - NODE_ENV=${ENVIRONMENT:-development}
       - SIGNING_KEY=${SIGNING_KEY}
+      - PLAYWRIGHT_BROWSERS_PATH=/workspace/.cache/ms-playwright
     volumes:
       - ..:/workspace:cached
     working_dir: /workspace

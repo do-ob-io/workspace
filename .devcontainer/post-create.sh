@@ -20,4 +20,9 @@ npm install -g eslint typescript vitest @go-task/cli shadcn
 # ------------------------------------------------------------------------------
 pnpm install
 
+# ------------------------------------------------------------------------------
+# Install Playwright browser binaries and OS dependencies
+# ------------------------------------------------------------------------------
+pnpm exec playwright install --with-deps chromium firefox webkit
+
 echo "============================== POST CREATE COMPLETE ================================="
