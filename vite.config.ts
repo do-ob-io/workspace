@@ -34,6 +34,14 @@ export default defineConfig({
           name: { label: 'node', color: 'green' },
           environment: 'node',
           include: [ 'nodejs/**/*.test.ts' ],
+          exclude: [ 'nodejs/**/*.browser.test.ts' ],
+        },
+      },
+      {
+        test: {
+          name: { label: 'browser', color: 'green' },
+          environment: 'happy-dom',
+          include: [ 'nodejs/**/*.browser.test.ts' ],
         },
       },
       {
@@ -46,6 +54,8 @@ export default defineConfig({
           }) ],
         test: {
           name: 'storybook',
+          fileParallelism: false,
+          maxWorkers: 1,
           env: {
             HEADLESS: 'true',
           },

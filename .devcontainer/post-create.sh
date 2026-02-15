@@ -13,7 +13,7 @@ uv tool install ty@latest
 uv tool install ruff@latest
 uv sync --all-packages
 
-npm install -g eslint typescript vitest @go-task/cli shadcn
+npm install -g eslint@9 typescript vitest @go-task/cli shadcn
 
 # ------------------------------------------------------------------------------
 # Install project dependencies

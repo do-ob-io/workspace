@@ -1,4 +1,4 @@
-# do-ob workspace
+# Workspace
 
 - If it exists, reference the `AGENTS.md` file for project specific instructions.
 

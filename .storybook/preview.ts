@@ -1,7 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
 
-import { CanvasDecorator } from './decorators';
-import './globals.css';
+import { CanvasDecorator, ProjectStylesDecorator } from './decorators';
 
 const preview: Preview = {
   parameters: {
@@ -20,7 +19,7 @@ const preview: Preview = {
     },
   },
 
-  decorators: [ CanvasDecorator ],
+  decorators: [ ProjectStylesDecorator, CanvasDecorator ],
 };
 
 export default preview;
