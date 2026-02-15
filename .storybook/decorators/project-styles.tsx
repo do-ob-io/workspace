@@ -1,8 +1,6 @@
 import type { Decorator } from '@storybook/react-vite';
 import { useEffect } from 'react';
 
-console.log('Loading project styles decorator...');
-
 import storybookGlobalsUrl from '../globals.css?url';
 
 /**
@@ -27,8 +25,6 @@ for (const [ globPath, url ] of Object.entries(projectStyleUrls)) {
     projectCssMap[match[1]] = url;
   }
 }
-
-console.log('Project CSS map:', JSON.stringify(projectCssMap, null, 2));
 
 /** Stable element ID used to manage the dynamic stylesheet link. */
 const LINK_ID = 'storybook-project-globals-css';
@@ -58,8 +54,6 @@ function getProjectName(fileName?: string): string | null {
 export const ProjectStylesDecorator: Decorator = (Story, context) => {
   const project = getProjectName(context.parameters?.fileName);
   const cssUrl = (project && projectCssMap[project]) || storybookGlobalsUrl;
-
-  console.log(`Applying styles for project: ${project || 'storybook globals'} (${cssUrl})`);
 
   useEffect(() => {
     let link = document.querySelector<HTMLLinkElement>(`#${LINK_ID}`);
