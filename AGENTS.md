@@ -42,6 +42,11 @@
 - React components must export a single component per file
 - Always create storybook stories for React component tests
 
+### NodeJS colocated test types (CRITICAL)
+- `<name>.test.ts`: NodeJS unit tests.
+- `<name>.browser.test.ts`: Mocked browser unit tests (mainly React hooks).
+- `<name>.stories.tsx`: Interactive React component tests.
+
 ### NodeJS shared project libraries (IMPORTANT)
 - `nodejs/core/`: Shared common utilities
 - `nodejs/hook/`: Shared React hooks
