@@ -132,7 +132,7 @@
     "typescriptreact"
   ],
   "tailwindCSS.classFunctions": ["cva", "cx", "clsx"],
-  "javascript.updateImportsOnFileMove.enabled": "never",
+  "js/ts.updateImportsOnFileMove.enabled": "never",
   "[typescript][javascript][typescriptreact]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
@@ -181,7 +181,7 @@
    "chat.useAgentsMdFile": true,
    "chat.useAgentSkills": true,
    "chat.useNestedAgentsMdFiles": true,
-   "chat.agent.maxRequests": 64,
+   "chat.agent.maxRequests": 128,
    "chat.agentFilesLocations": {
     ".code/agents": true
    },
