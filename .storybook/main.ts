@@ -18,6 +18,26 @@ const staticDirs = fs.readdirSync(nodejsDir)
   })
   .map((project) => `../nodejs/${project}/public`);
 
+/**
+ * Converts a kebab-case project folder name to Title Case.
+ *
+ * @param name - The kebab-case folder name (e.g. "game-sewd").
+ * @returns The title-cased string (e.g. "Game Sewd").
+ */
+function toTitleCase(name: string): string {
+  return name.replaceAll(/\b\w/g, (char) => char.toUpperCase()).replaceAll('-', ' ');
+}
+
+/**
+ * Declares an array of project folder names under `../nodejs/` that contain
+ * a `src` directory, used to configure Storybook story discovery.
+ */
+const projectPaths = fs.readdirSync(nodejsDir)
+  .filter((project) => {
+    const srcPath = path.join(nodejsDir, project, 'src');
+    return fs.existsSync(srcPath) && fs.statSync(srcPath).isDirectory();
+  });
+
 const resolveExtensions = [ '.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs' ];
 
 function resolveProjectSrcImport(project: string, request: string): string | null {
@@ -73,10 +93,11 @@ function getAbsolutePath(value: string): any {
   return path.dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
 }
 const config: StorybookConfig = {
-  'stories': [
-    // '../nodejs/**/*.mdx',
-    '../nodejs/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-  ],
+  'stories': projectPaths.map((project) => ({
+    directory: `../nodejs/${project}/src`,
+    files: '**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    titlePrefix: toTitleCase(project),
+  })),
   'staticDirs': staticDirs,
   'addons': [
     getAbsolutePath('@storybook/addon-vitest'),
