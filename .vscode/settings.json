@@ -26,7 +26,7 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.quickSuggestions": {
     "strings": "on",
   },
@@ -111,6 +111,7 @@
    */
   "html.format.unformatted": "wbr,%",
   "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
   "tailwindCSS.classAttributes": [
     "class",
     "className",

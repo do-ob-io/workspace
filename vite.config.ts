@@ -4,28 +4,29 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import babel from '@rolldown/plugin-babel';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
 const dirname = typeof __dirname === 'undefined' ? path.dirname(fileURLToPath(import.meta.url)) : __dirname;
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   plugins: [
-    react({
-      babel: {
-        plugins: [ [ 'babel-plugin-react-compiler' ] ],
-      },
+    react(),
+    babel({
+      presets: [ reactCompilerPreset() ],
     }),
-    tsconfigPaths(),
     tailwindcss(),
   ],
   server: {
     host: true,
     allowedHosts: [ '.localhost' ],
+  },
+  resolve: {
+    tsconfigPaths: true,
   },
   test: {
     projects: [

@@ -1,9 +1,11 @@
 import js from '@eslint/js';
+import eslintReact from '@eslint-react/eslint-plugin';
 import stylistic from '@stylistic/eslint-plugin';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss';
+import { configs as dependConfigs } from 'eslint-plugin-depend';
 import { importX } from 'eslint-plugin-import-x';
-import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import { configs as storybookConfigs } from 'eslint-plugin-storybook';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
@@ -24,16 +26,10 @@ export default defineConfig([
   ]),
 
   js.configs.recommended,
-  ...tseslint.recommended,
-  ...tseslint.stylistic,
+  tseslint.recommended,
 
   ...storybookConfigs['flat/recommended'],
 
-  reactPlugin.configs.flat['jsx-runtime'],
-  reactHooks.configs.flat['recommended-latest'],
-  eslintPluginUnicorn.configs.recommended,
-  importX.flatConfigs.recommended,
-  importX.flatConfigs.typescript,
   {
     files: [ '**/*.{js,jsx,mjs,ts,tsx}' ],
 
@@ -46,11 +42,24 @@ export default defineConfig([
       },
     },
 
+    extends: [
+      eslintReact.configs['recommended-typescript'],
+      reactHooks.configs.flat['recommended-latest'],
+      eslintPluginBetterTailwindcss.configs.recommended,
+      eslintPluginUnicorn.configs.recommended,
+      importX.flatConfigs.recommended,
+      importX.flatConfigs.typescript,
+      dependConfigs['flat/recommended'],
+    ],
+
     plugins: {
       '@stylistic': stylistic,
     },
 
     settings: {
+      'better-tailwindcss': {
+        entryPoint: './globals.css',
+      },
       'import-x/resolver-next': [
         createTypeScriptImportResolver({
           project: [
@@ -110,8 +119,11 @@ export default defineConfig([
       'unicorn/no-array-reduce': 'off',
 
       // React rules
-      'react/prefer-read-only-props': 'error',
-      'react/hook-use-state': 'error',
+      'react-hooks/immutability': 'error',
+      '@eslint-react/naming-convention/use-state': 'error',
+
+      // Tailwind rules
+      'better-tailwindcss/no-unknown-classes': 'off',
 
       // Import rules
       'import-x/no-cycle': 'error',
