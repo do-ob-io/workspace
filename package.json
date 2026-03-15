@@ -49,6 +49,7 @@
     "eslint-plugin-unicorn": "catalog:eslint-latest",
     "globals": "catalog:eslint-latest",
     "playwright": "^1.58.2",
+    "postcss": "^8.5.8",
     "react": "catalog:react-latest",
     "react-dom": "catalog:react-latest",
     "shadcn": "^3.8.5",

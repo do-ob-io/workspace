@@ -1,33 +1,34 @@
 import type { Decorator } from '@storybook/react-vite';
 import { useEffect } from 'react';
 
-import storybookGlobalsUrl from '../globals.css?url';
+import storybookGlobalsCss from '../globals.css?inline';
 
 /**
- * Map of glob-matched paths to their processed CSS URLs.
+ * Map of glob-matched paths to their Vite-compiled CSS strings.
  *
- * Keys follow the pattern `../nodejs/<project>/src/globals.css`.
- * Values are Vite-processed asset URLs.
+ * Keys follow the pattern `../../nodejs/<project>/src/globals.css`.
+ * Values are compiled CSS strings produced by Vite's `?inline` query
+ * (processed through the `@tailwindcss/vite` plugin).
  */
-const projectStyleUrls = import.meta.glob<string>(
+const projectStyles = import.meta.glob<string>(
   '../../nodejs/*/src/globals.css',
-  { query: '?url', import: 'default', eager: true },
+  { query: '?inline', import: 'default', eager: true },
 );
 
 /**
- * Lookup from project directory name to its processed globals CSS URL.
+ * Lookup from project directory name to its compiled globals CSS string.
  */
 const projectCssMap: Record<string, string> = {};
 
-for (const [ globPath, url ] of Object.entries(projectStyleUrls)) {
+for (const [ globPath, css ] of Object.entries(projectStyles)) {
   const match = globPath.match(/\.\.\/nodejs\/([^/]+)\/src\/globals\.css$/);
   if (match) {
-    projectCssMap[match[1]] = url;
+    projectCssMap[match[1]] = css;
   }
 }
 
-/** Stable element ID used to manage the dynamic stylesheet link. */
-const LINK_ID = 'storybook-project-globals-css';
+/** Stable element ID used to manage the dynamic stylesheet. */
+const STYLE_ID = 'storybook-project-globals-css';
 
 /**
  * Extract the project directory name from a story's file path.
@@ -43,30 +44,29 @@ function getProjectName(fileName?: string): string | null {
 }
 
 /**
- * Decorator that dynamically loads the appropriate `globals.css` for each
- * project. When a project has its own `src/globals.css`, that stylesheet is
- * injected via a `<link>` tag. Projects without one fall back to the shared
- * `.storybook/globals.css`.
+ * Decorator that dynamically loads the appropriate compiled `globals.css` for
+ * each project. When a project has its own `src/globals.css`, that compiled
+ * stylesheet is injected via a `<style>` tag. Projects without one fall back
+ * to the shared `.storybook/globals.css`.
  *
  * Only one project stylesheet is active at any time — switching stories
- * swaps the `<link>` href rather than stacking stylesheets.
+ * replaces the `<style>` content rather than stacking stylesheets.
  */
 export const ProjectStylesDecorator: Decorator = (Story, context) => {
   const project = getProjectName(context.parameters?.fileName);
-  const cssUrl = (project && projectCssMap[project]) || storybookGlobalsUrl;
+  const css = (project && projectCssMap[project]) || storybookGlobalsCss;
 
   useEffect(() => {
-    let link = document.querySelector<HTMLLinkElement>(`#${LINK_ID}`);
+    let style = document.querySelector<HTMLStyleElement>(`#${STYLE_ID}`);
 
-    if (!link) {
-      link = document.createElement('link');
-      link.id = LINK_ID;
-      link.rel = 'stylesheet';
-      document.head.append(link);
+    if (!style) {
+      style = document.createElement('style');
+      style.id = STYLE_ID;
+      document.head.append(style);
     }
 
-    link.href = cssUrl;
-  }, [ cssUrl ]);
+    style.textContent = css;
+  }, [ css ]);
 
   return <Story />;
 };

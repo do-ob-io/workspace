@@ -23,7 +23,7 @@
     "body": [
       "import type { Meta, StoryObj } from '@storybook/react-vite';",
       "",
-      "import { ${1:${TM_FILENAME_BASE/(.*)\\..+$/${1:/pascalcase}/}} } from './${TM_FILENAME_BASE/(.*)\\..+$/$1/}';",
+      "import { ${1:${TM_FILENAME_BASE/(.*)\\..+$/${1:/pascalcase}/}} } from './${TM_FILENAME_BASE/(.*)\\..+$/$1/}.js';",
       "",
       "const meta = {",
       "\tcomponent: $1,",

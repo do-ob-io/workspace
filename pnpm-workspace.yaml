@@ -67,6 +67,7 @@ catalogs:
     vite: ^8
     vite-plugin-pwa: ^1
     vitest: ^4
+    tsdown: ^0
   vite8:
     '@rolldown/plugin-babel': ^0
     '@tailwindcss/vite': ^4
