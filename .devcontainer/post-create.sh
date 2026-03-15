@@ -40,30 +40,6 @@ GITALL
 fi
 
 # ------------------------------------------------------------------------------
-# Install git-all shell function into .bashrc
-# ------------------------------------------------------------------------------
-if ! grep -q 'git-all()' ~/.bashrc 2>/dev/null; then
-  cat >> ~/.bashrc << 'GITALL'
-
-# ------------------------------------------------------------------------------
-# git-all: Run git commands across all repos under nodejs/
-# Usage: git-all add .
-#        git-all commit -m "my message"
-#        git-all status
-# ------------------------------------------------------------------------------
-git-all() {
-  local base="${GIT_ALL_BASE:-nodejs}"
-  for dir in "$base"/*/; do
-    if [[ -d "$dir/.git" ]]; then
-      echo "=== $dir ==="
-      git -C "$dir" "$@"
-    fi
-  done
-}
-GITALL
-fi
-
-# ------------------------------------------------------------------------------
 # Install project dependencies
 # ------------------------------------------------------------------------------
 pnpm install

@@ -1,6 +1,7 @@
 /// <reference types="vitest/config" />
 
 // https://vite.dev/config/
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -11,6 +12,65 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vite';
 const dirname = typeof __dirname === 'undefined' ? path.dirname(fileURLToPath(import.meta.url)) : __dirname;
+const nodejsDir = path.resolve(dirname, 'nodejs');
+const resolveExtensions = [ '.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs' ];
+
+/**
+ * Resolves an `@/` prefixed import to a file within a project's `src` directory.
+ *
+ * @param project - The nodejs project folder name.
+ * @param request - The import specifier (e.g. `@/utils/helper`).
+ * @returns The absolute path to the resolved file, or null if not found.
+ */
+function resolveProjectSrcImport(project: string, request: string): string | null {
+  const cleanedRequest = request.replace(/^[@]\//, '');
+  const extension = path.extname(cleanedRequest);
+  const extensionlessRequest = extension
+    ? cleanedRequest.slice(0, cleanedRequest.length - extension.length)
+    : cleanedRequest;
+
+  const candidates = [
+    path.resolve(nodejsDir, project, 'src', cleanedRequest),
+    path.resolve(nodejsDir, project, 'src', extensionlessRequest),
+    ...resolveExtensions.map((item) => path.resolve(nodejsDir, project, 'src', `${extensionlessRequest}${item}`)),
+    ...resolveExtensions.map((item) => path.resolve(nodejsDir, project, 'src', cleanedRequest, `index${item}`)),
+    ...resolveExtensions.map((item) => path.resolve(nodejsDir, project, 'src', extensionlessRequest, `index${item}`)),
+  ];
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) {
+      return candidate;
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Creates a Vite plugin that resolves `@/` imports to the correct project's `src` directory
+ * based on the importer's location under `nodejs/<project>/`.
+ *
+ * @returns A Vite plugin for workspace `@` alias resolution.
+ */
+function createWorkspaceAtAliasPlugin() {
+  return {
+    name: 'workspace-project-at-alias-resolver',
+    resolveId(source: string, importer?: string) {
+      if (!source.startsWith('@/') || !importer) {
+        return null;
+      }
+
+      const normalizedImporter = importer.split('?')[0].replaceAll('\\', '/');
+      const match = normalizedImporter.match(/\/nodejs\/([^/]+)\//);
+
+      if (!match) {
+        return null;
+      }
+
+      return resolveProjectSrcImport(match[1], source);
+    },
+  };
+}
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
@@ -31,6 +91,7 @@ export default defineConfig({
   test: {
     projects: [
       {
+        plugins: [ createWorkspaceAtAliasPlugin() ],
         test: {
           name: { label: 'node', color: 'green' },
           environment: 'node',
@@ -39,6 +100,7 @@ export default defineConfig({
         },
       },
       {
+        plugins: [ createWorkspaceAtAliasPlugin() ],
         test: {
           name: { label: 'browser', color: 'green' },
           environment: 'happy-dom',
