@@ -1,5 +1,5 @@
 ---
-name: router-core/ssr
+name: tanstack-router-core/ssr
 description: >-
   Non-streaming and streaming SSR, RouterClient/RouterServer,
   renderRouterToString/renderRouterToStream, createRequestHandler,
@@ -9,10 +9,10 @@ description: >-
   history on server, data serialization, document head management.
 type: sub-skill
 library: tanstack-router
-library_version: '1.166.2'
+library_version: "1.166.2"
 requires:
-  - router-core
-  - router-core/data-loading
+  - tanstack-router-core
+  - tanstack-router-core/data-loading
 sources:
   - TanStack/router:docs/router/guide/ssr.md
   - TanStack/router:docs/router/guide/document-head-management.md
@@ -23,7 +23,7 @@ sources:
 
 > **WARNING**: SSR APIs are experimental. They share internal implementations with TanStack Start and may change. **TanStack Start is the recommended way to do SSR in production** — use manual SSR setup only when integrating with an existing server.
 
-> **CRITICAL**: TanStack Router is CLIENT-FIRST. Loaders run on the client by default. With SSR enabled, loaders run on BOTH client AND server. They are NOT server-only like Remix/Next.js loaders. See [router-core/data-loading](../data-loading/SKILL.md).
+> **CRITICAL**: TanStack Router is CLIENT-FIRST. Loaders run on the client by default. With SSR enabled, loaders run on BOTH client AND server. They are NOT server-only like Remix/Next.js loaders. See [tanstack-router-core/data-loading](../data-loading/SKILL.md).
 
 > **CRITICAL**: Do not generate Next.js patterns (`getServerSideProps`, App Router, server components) or Remix patterns (server-only loader exports). TanStack Router has its own SSR API.
 
@@ -46,16 +46,16 @@ The router must be created identically on server and client. Export a factory fu
 
 ```tsx
 // src/router.tsx
-import { createRouter as createTanstackRouter } from '@tanstack/react-router'
-import { routeTree } from './routeTree.gen'
+import { createRouter as createTanstackRouter } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
 
 export function createRouter() {
-  return createTanstackRouter({ routeTree })
+  return createTanstackRouter({ routeTree });
 }
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface Register {
-    router: ReturnType<typeof createRouter>
+    router: ReturnType<typeof createRouter>;
   }
 }
 ```
@@ -69,12 +69,12 @@ declare module '@tanstack/react-router' {
 import {
   createRequestHandler,
   defaultRenderHandler,
-} from '@tanstack/react-router/ssr/server'
-import { createRouter } from './router'
+} from "@tanstack/react-router/ssr/server";
+import { createRouter } from "./router";
 
 export async function render({ request }: { request: Request }) {
-  const handler = createRequestHandler({ request, createRouter })
-  return await handler(defaultRenderHandler)
+  const handler = createRequestHandler({ request, createRouter });
+  return await handler(defaultRenderHandler);
 }
 ```
 
@@ -86,11 +86,11 @@ import {
   createRequestHandler,
   renderRouterToString,
   RouterServer,
-} from '@tanstack/react-router/ssr/server'
-import { createRouter } from './router'
+} from "@tanstack/react-router/ssr/server";
+import { createRouter } from "./router";
 
 export function render({ request }: { request: Request }) {
-  const handler = createRequestHandler({ request, createRouter })
+  const handler = createRequestHandler({ request, createRouter });
 
   return handler(({ responseHeaders, router }) =>
     renderRouterToString({
@@ -98,7 +98,7 @@ export function render({ request }: { request: Request }) {
       router,
       children: <RouterServer router={router} />,
     }),
-  )
+  );
 }
 ```
 
@@ -106,13 +106,13 @@ export function render({ request }: { request: Request }) {
 
 ```tsx
 // src/entry-client.tsx
-import { hydrateRoot } from 'react-dom/client'
-import { RouterClient } from '@tanstack/react-router/ssr/client'
-import { createRouter } from './router'
+import { hydrateRoot } from "react-dom/client";
+import { RouterClient } from "@tanstack/react-router/ssr/client";
+import { createRouter } from "./router";
 
-const router = createRouter()
+const router = createRouter();
 
-hydrateRoot(document, <RouterClient router={router} />)
+hydrateRoot(document, <RouterClient router={router} />);
 ```
 
 ## Streaming SSR
@@ -124,12 +124,12 @@ hydrateRoot(document, <RouterClient router={router} />)
 import {
   createRequestHandler,
   defaultStreamHandler,
-} from '@tanstack/react-router/ssr/server'
-import { createRouter } from './router'
+} from "@tanstack/react-router/ssr/server";
+import { createRouter } from "./router";
 
 export async function render({ request }: { request: Request }) {
-  const handler = createRequestHandler({ request, createRouter })
-  return await handler(defaultStreamHandler)
+  const handler = createRequestHandler({ request, createRouter });
+  return await handler(defaultStreamHandler);
 }
 ```
 
@@ -141,11 +141,11 @@ import {
   createRequestHandler,
   renderRouterToStream,
   RouterServer,
-} from '@tanstack/react-router/ssr/server'
-import { createRouter } from './router'
+} from "@tanstack/react-router/ssr/server";
+import { createRouter } from "./router";
 
 export function render({ request }: { request: Request }) {
-  const handler = createRequestHandler({ request, createRouter })
+  const handler = createRequestHandler({ request, createRouter });
 
   return handler(({ request, responseHeaders, router }) =>
     renderRouterToStream({
@@ -154,7 +154,7 @@ export function render({ request }: { request: Request }) {
       router,
       children: <RouterServer router={router} />,
     }),
-  )
+  );
 }
 ```
 
@@ -173,19 +173,19 @@ import {
   HeadContent,
   Outlet,
   Scripts,
-} from '@tanstack/react-router'
+} from "@tanstack/react-router";
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
-      { charSet: 'UTF-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
-      { title: 'My App' },
+      { charSet: "UTF-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1.0" },
+      { title: "My App" },
     ],
-    links: [{ rel: 'icon', href: '/favicon.ico' }],
+    links: [{ rel: "icon", href: "/favicon.ico" }],
   }),
   component: RootComponent,
-})
+});
 
 function RootComponent() {
   return (
@@ -198,7 +198,7 @@ function RootComponent() {
         <Scripts />
       </body>
     </html>
-  )
+  );
 }
 ```
 
@@ -208,25 +208,25 @@ Child route `title` and `meta` tags override parent tags with the same `name`/`p
 
 ```tsx
 // src/routes/posts/$postId.tsx
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/posts/$postId')({
+export const Route = createFileRoute("/posts/$postId")({
   loader: async ({ params }) => {
-    const post = await fetchPost(params.postId)
-    return { post }
+    const post = await fetchPost(params.postId);
+    return { post };
   },
   head: ({ loaderData }) => ({
     meta: [
       { title: loaderData.post.title },
-      { name: 'description', content: loaderData.post.excerpt },
+      { name: "description", content: loaderData.post.excerpt },
     ],
   }),
   component: PostPage,
-})
+});
 
 function PostPage() {
-  const { post } = Route.useLoaderData()
-  return <article>{post.content}</article>
+  const { post } = Route.useLoaderData();
+  return <article>{post.content}</article>;
 }
 ```
 
@@ -235,11 +235,11 @@ function PostPage() {
 For SPAs without server-rendered HTML, render `<HeadContent />` at the top of the component tree:
 
 ```tsx
-import { createRootRoute, HeadContent, Outlet } from '@tanstack/react-router'
+import { createRootRoute, HeadContent, Outlet } from "@tanstack/react-router";
 
 const rootRoute = createRootRoute({
   head: () => ({
-    meta: [{ title: 'My SPA' }],
+    meta: [{ title: "My SPA" }],
   }),
   component: () => (
     <>
@@ -247,7 +247,7 @@ const rootRoute = createRootRoute({
       <Outlet />
     </>
   ),
-})
+});
 ```
 
 ## Body Scripts
@@ -257,7 +257,7 @@ Use `scripts` (separate from `head.scripts`) to inject scripts into `<body>` bef
 ```tsx
 export const Route = createRootRoute({
   scripts: () => [{ children: 'console.log("runs before hydration")' }],
-})
+});
 ```
 
 The `<Scripts />` component renders these. Place it at the end of `<body>`.
@@ -267,7 +267,7 @@ The `<Scripts />` component renders these. Place it at the end of `<body>`.
 `ScriptOnce` renders a `<script>` during SSR that executes immediately and self-removes. On client navigation, it does nothing (no duplicate execution).
 
 ```tsx
-import { ScriptOnce } from '@tanstack/react-router'
+import { ScriptOnce } from "@tanstack/react-router";
 
 const themeScript = `(function() {
   try {
@@ -277,7 +277,7 @@ const themeScript = `(function() {
       : theme;
     document.documentElement.classList.add(resolved);
   } catch (e) {}
-})();`
+})();`;
 
 function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (
@@ -285,7 +285,7 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
       <ScriptOnce children={themeScript} />
       {children}
     </>
-  )
+  );
 }
 ```
 
@@ -301,38 +301,38 @@ If the script modifies the DOM (e.g., adds a class to `<html>`), use `suppressHy
 
 ```tsx
 // src/entry-server.tsx
-import { pipeline } from 'node:stream/promises'
+import { pipeline } from "node:stream/promises";
 import {
   RouterServer,
   createRequestHandler,
   renderRouterToString,
-} from '@tanstack/react-router/ssr/server'
-import { createRouter } from './router'
-import type express from 'express'
+} from "@tanstack/react-router/ssr/server";
+import { createRouter } from "./router";
+import type express from "express";
 
 export async function render({
   req,
   res,
 }: {
-  req: express.Request
-  res: express.Response
+  req: express.Request;
+  res: express.Response;
 }) {
-  const protocol = req.get('x-forwarded-proto') ?? req.protocol
-  const host = req.get('x-forwarded-host') ?? req.get('host')
-  const url = new URL(req.originalUrl || req.url, `${protocol}://${host}`).href
+  const protocol = req.get("x-forwarded-proto") ?? req.protocol;
+  const host = req.get("x-forwarded-host") ?? req.get("host");
+  const url = new URL(req.originalUrl || req.url, `${protocol}://${host}`).href;
 
   const request = new Request(url, {
     method: req.method,
     headers: (() => {
-      const headers = new Headers()
+      const headers = new Headers();
       for (const [key, value] of Object.entries(req.headers)) {
-        headers.set(key, value as any)
+        headers.set(key, value as any);
       }
-      return headers
+      return headers;
     })(),
-  })
+  });
 
-  const handler = createRequestHandler({ request, createRouter })
+  const handler = createRequestHandler({ request, createRouter });
 
   const response = await handler(({ responseHeaders, router }) =>
     renderRouterToString({
@@ -340,14 +340,14 @@ export async function render({
       router,
       children: <RouterServer router={router} />,
     }),
-  )
+  );
 
-  res.status(response.status)
+  res.status(response.status);
   response.headers.forEach((value, name) => {
-    res.setHeader(name, value)
-  })
+    res.setHeader(name, value);
+  });
 
-  return pipeline(response.body as any, res)
+  return pipeline(response.body as any, res);
 }
 ```
 
@@ -360,16 +360,16 @@ Loaders run on BOTH client and server with SSR. Browser-only APIs (`window`, `do
 ```tsx
 // WRONG — crashes on server
 loader: async () => {
-  const token = localStorage.getItem('token')
-  return fetchData(token)
-}
+  const token = localStorage.getItem("token");
+  return fetchData(token);
+};
 
 // CORRECT — guard with environment check
 loader: async () => {
   const token =
-    typeof window !== 'undefined' ? localStorage.getItem('token') : null
-  return fetchData(token)
-}
+    typeof window !== "undefined" ? localStorage.getItem("token") : null;
+  return fetchData(token);
+};
 ```
 
 ### 2. MEDIUM: Using hash fragments for server-rendered content
@@ -398,26 +398,26 @@ TanStack Router does NOT use `getServerSideProps`, `getStaticProps`, App Router 
 ```tsx
 // WRONG — Next.js patterns
 export async function getServerSideProps() {
-  return { props: { data: await fetchData() } }
+  return { props: { data: await fetchData() } };
 }
 
 // WRONG — Remix patterns
 export async function loader({ request }: LoaderFunctionArgs) {
-  return json({ data: await fetchData() })
+  return json({ data: await fetchData() });
 }
 
 // CORRECT — TanStack Router pattern
-export const Route = createFileRoute('/data')({
+export const Route = createFileRoute("/data")({
   loader: async () => {
-    const data = await fetchData()
-    return { data }
+    const data = await fetchData();
+    return { data };
   },
   component: DataPage,
-})
+});
 
 function DataPage() {
-  const { data } = Route.useLoaderData()
-  return <div>{data}</div>
+  const { data } = Route.useLoaderData();
+  return <div>{data}</div>;
 }
 ```
 
@@ -429,9 +429,9 @@ TanStack Router loaders are client-first by design. When SSR is enabled, they ru
 - Database access does NOT belong in loaders (unlike Remix/Next) — use API routes
 - For server-only data logic with SSR, use TanStack Start's server functions
 
-See [router-core/data-loading](../data-loading/SKILL.md) for loader fundamentals.
+See [tanstack-router-core/data-loading](../data-loading/SKILL.md) for loader fundamentals.
 
 ## Cross-References
 
-- [router-core/data-loading](../data-loading/SKILL.md) — SSR changes where loaders execute
+- [tanstack-router-core/data-loading](../data-loading/SKILL.md) — SSR changes where loaders execute
 - [compositions/router-query](../../../../react-router/skills/compositions/router-query/SKILL.md) — SSR dehydration/hydration with TanStack Query
