@@ -15,6 +15,7 @@ import { configs as tseslint } from 'typescript-eslint';
 export default defineConfig([
   globalIgnores([
     '**/.*',
+    '**/*.gen.ts',
     '**/dist/',
     '**/node_modules/',
     'target/',

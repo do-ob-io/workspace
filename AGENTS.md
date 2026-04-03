@@ -30,6 +30,9 @@
 - Before completing an update or change, run all quality checks in a project
 - Path the quality tools at the appropriate depth given the task (workspace root, project root, specific file)
 
+## Maintain AGENTS.md instructions
+- Always maintain clear and brief AGENTS.md instructions
+
 ## Filename rules (CRITICAL)
 - JavaScript and TypeScript use `kebab-case` for files.
 - Python uses `snake_case` for files.
@@ -46,6 +49,11 @@
 - `<name>.test.ts`: NodeJS unit tests.
 - `<name>.browser.test.ts`: Mocked browser unit tests (mainly React hooks).
 - `<name>.stories.tsx`: Interactive React component tests.
+
+### NodeJS dependency management (CRITICAL)
+- All new dependencies must use `catalog:` version specifiers in project `package.json` files
+- Define and categorize dependency versions in the `pnpm-workspace.yaml` catalogs (e.g., `react`, `vite`, `typescript`, `eslint`, etc.)
+- Use the default `catalog` for uncategorized or cross-cutting dependencies
 
 ### NodeJS shared project libraries (IMPORTANT)
 - `nodejs/core/`: Shared common utilities
