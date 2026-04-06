@@ -5,13 +5,13 @@ catalog:
 
 catalogs:
   data:
-    '@electric-sql/pglite': ^0.4.2
-    '@types/pg': ^8.20.0
-    dotenv: ^17.3.1
+    '@electric-sql/pglite': ^0
+    '@types/pg': ^8
+    dotenv: ^17
     drizzle-kit: 1.0.0-beta.20
     drizzle-orm: 1.0.0-beta.20
-    pg: ^8.20.0
-    zod: ^4.3.6
+    pg: ^8
+    zod: ^4
   eslint:
     '@eslint-react/eslint-plugin': ^2
     '@eslint/js': ^9
@@ -32,6 +32,8 @@ catalogs:
     '@fastify/middie': ^9
     '@fastify/static': ^8
     fastify: ^5
+    '@fastify/swagger': ^9
+    '@fastify/type-provider-json-schema-to-ts': ^5
   react:
     '@base-ui/react': ^1
     '@react-spring/three': ^10
@@ -61,6 +63,9 @@ catalogs:
     '@storybook/addon-vitest': ^10
     '@storybook/react-vite': ^10
     storybook: ^10
+  tanstack:
+    '@tanstack/react-router': ^1
+    '@tanstack/router-vite-plugin': ^1
   typescript:
     '@types/lodash': ^4
     '@types/node': ^25
@@ -71,10 +76,10 @@ catalogs:
     '@vitejs/plugin-react': ^6
     '@vitest/browser-playwright': ^4
     '@vitest/coverage-v8': ^4
-    tsdown: ^0.21.7
+    tsdown: ^0
     vite: ^8
     vite-plugin-pwa: ^1
-    vitest: ^4.1.2
+    vitest: ^4
 
 ignoredBuiltDependencies:
   - sharp
