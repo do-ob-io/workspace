@@ -13,20 +13,20 @@ catalogs:
     pg: ^8
     zod: ^4
   eslint:
-    '@eslint-react/eslint-plugin': ^2
-    '@eslint/js': ^9
-    '@stylistic/eslint-plugin': ^5
-    eslint: ^9
-    eslint-import-resolver-typescript: ^4
-    eslint-plugin-better-tailwindcss: ^4
-    eslint-plugin-depend: ^1
-    eslint-plugin-import-x: ^4
-    eslint-plugin-react-hooks: ^7
-    eslint-plugin-react-refresh: ^0
-    eslint-plugin-storybook: ^10
-    eslint-plugin-unicorn: ^63
-    globals: ^17
-    typescript-eslint: ^8
+    '@eslint-react/eslint-plugin': ^2.13.0
+    '@eslint/js': ^9.39.4
+    '@stylistic/eslint-plugin': ^5.10.0
+    eslint: ^9.39.4
+    eslint-import-resolver-typescript: ^4.4.4
+    eslint-plugin-better-tailwindcss: ^4.3.2
+    eslint-plugin-depend: ^1.5.0
+    eslint-plugin-import-x: ^4.16.2
+    eslint-plugin-react-hooks: ^7.0.1
+    eslint-plugin-react-refresh: ^0.5.2
+    eslint-plugin-storybook: ^10.3.5
+    eslint-plugin-unicorn: ^63.0.0
+    globals: ^17.4.0
+    typescript-eslint: ^8.58.0
   fastify:
     '@fastify/autoload': ^6
     '@fastify/compress': ^8
@@ -42,20 +42,20 @@ catalogs:
   react:
     '@base-ui/react': ^1
     '@react-spring/three': ^10
-    '@react-three/drei': ^10
-    '@react-three/fiber': ^9
+    '@react-three/drei': ^10.7.7
+    '@react-three/fiber': ^9.5.0
     '@tanstack/react-table': ^8
-    '@types/react': ^19
-    '@types/react-dom': ^19
+    '@types/react': ^19.2.14
+    '@types/react-dom': ^19.2.3
     cmdk: ^1
     date-fns: ^4
     embla-carousel-react: ^8
     input-otp: ^1
     lucide-react: ^0
     next-themes: ^0
-    react: ^19
+    react: ^19.2.4
     react-day-picker: ^9
-    react-dom: ^19
+    react-dom: ^19.2.4
     react-resizable-panels: ^4
     recharts: ^2
     shadcn: ^3
@@ -63,28 +63,28 @@ catalogs:
     tw-animate-css: ^1
     vaul: ^1
   storybook:
-    '@storybook/addon-a11y': ^10
-    '@storybook/addon-docs': ^10
-    '@storybook/addon-vitest': ^10
-    '@storybook/react-vite': ^10
-    storybook: ^10
+    '@storybook/addon-a11y': ^10.3.5
+    '@storybook/addon-docs': ^10.3.5
+    '@storybook/addon-vitest': ^10.3.5
+    '@storybook/react-vite': ^10.3.5
+    storybook: ^10.3.5
   tanstack:
     '@tanstack/react-router': ^1
     '@tanstack/router-vite-plugin': ^1
   typescript:
     '@types/lodash': ^4
-    '@types/node': ^25
-    typescript: ^5
+    '@types/node': ^25.5.2
+    typescript: ^5.9.3
   vite:
-    '@rolldown/plugin-babel': ^0
-    '@tailwindcss/vite': ^4
-    '@vitejs/plugin-react': ^6
-    '@vitest/browser-playwright': ^4
-    '@vitest/coverage-v8': ^4
+    '@rolldown/plugin-babel': ^0.2.2
+    '@tailwindcss/vite': ^4.2.2
+    '@vitejs/plugin-react': ^6.0.1
+    '@vitest/browser-playwright': ^4.1.3
+    '@vitest/coverage-v8': ^4.1.3
     tsdown: ^0
-    vite: ^8
+    vite: ^8.0.7
     vite-plugin-pwa: ^1
-    vitest: ^4
+    vitest: ^4.1.3
 
 ignoredBuiltDependencies:
   - sharp
