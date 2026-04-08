@@ -11,9 +11,9 @@ import tailwindcss from '@tailwindcss/vite';
 import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vite';
-const dirname = typeof __dirname === 'undefined' ? path.dirname(fileURLToPath(import.meta.url)) : __dirname;
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 const nodejsDir = path.resolve(dirname, 'nodejs');
-const resolveExtensions = [ '.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs' ];
+const resolveExtensions = ['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs'];
 
 /**
  * Resolves an `@/` prefixed import to a file within a project's `src` directory.
@@ -77,13 +77,13 @@ export default defineConfig({
   plugins: [
     react(),
     babel({
-      presets: [ reactCompilerPreset() ],
+      presets: [reactCompilerPreset()],
     }),
     tailwindcss(),
   ],
   server: {
     host: true,
-    allowedHosts: [ '.localhost' ],
+    allowedHosts: ['.localhost'],
   },
   resolve: {
     tsconfigPaths: true,
@@ -91,20 +91,20 @@ export default defineConfig({
   test: {
     projects: [
       {
-        plugins: [ createWorkspaceAtAliasPlugin() ],
+        plugins: [createWorkspaceAtAliasPlugin()],
         test: {
           name: { label: 'node', color: 'green' },
           environment: 'node',
-          include: [ 'nodejs/**/*.test.ts' ],
-          exclude: [ 'nodejs/**/*.browser.test.ts' ],
+          include: ['nodejs/**/*.test.ts'],
+          exclude: ['nodejs/**/*.browser.test.ts'],
         },
       },
       {
-        plugins: [ createWorkspaceAtAliasPlugin() ],
+        plugins: [createWorkspaceAtAliasPlugin()],
         test: {
           name: { label: 'browser', color: 'green' },
           environment: 'happy-dom',
-          include: [ 'nodejs/**/*.browser.test.ts' ],
+          include: ['nodejs/**/*.browser.test.ts'],
         },
       },
       {
@@ -114,7 +114,7 @@ export default defineConfig({
           // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
           storybookTest({
             configDir: path.join(dirname, '.storybook'),
-          }) ],
+          })],
         test: {
           name: 'storybook',
           fileParallelism: false,
@@ -130,11 +130,11 @@ export default defineConfig({
                 headless: true,
               },
             }),
-            instances: [ {
+            instances: [{
               browser: 'chromium',
-            } ],
+            }],
           },
-          setupFiles: [ '.storybook/vitest.setup.ts' ],
+          setupFiles: ['.storybook/vitest.setup.ts'],
         },
       },
     ],

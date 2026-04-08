@@ -1,16 +1,9 @@
-# Workspace
-container/**/*
-nodejs/**/*
-python/**/*
-rust/**/*
-!container/AGENTS.md
-!nodejs/AGENTS.md
-!python/AGENTS.md
-!rust/AGENTS.md
-!container/README.md
-!nodejs/README.md
-!python/README.md
-!rust/README.md
+# Workspace — sub-projects are separate git repos
+# Ignore sub-project directories but allow workspace-level files
+container/*/
+nodejs/*/
+python/*/
+rust/*/
 package-lock.json
 pnpm-lock.yaml
 uv.lock

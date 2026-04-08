@@ -80,7 +80,7 @@
 | Type          | Base Command                                  | Description                     | Instructions                                |
 | ------------- | --------------------------------------------- | ------------------------------- | ------------------------------------------- |
 | Typechecking  | `tsc --noEmit`                                | TypeScript Compiler             | `cd` to specific project                    |
-| Linting       | `eslint --fix`, `eslint --fix <path-to-file>` | Linter and auto-fixer           | Use from workspace root or specific project |
+| Linting       | `oxlint --fix`, `oxlint --fix <path-to-file>` | Linter and auto-fixer           | Use from workspace root or specific project |
 | Testing       | `vitest run`, `vitest run <path-to-file>`     | Testing framework               | Use from workspace root or specific project |
 | Build         | `pnpm build`                                  | Build the project               | `cd` to specific project                    |
 | Documentation | `pnpm typedoc`                                | TypeDoc documentation generator | Use from workspace root                     |

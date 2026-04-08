@@ -3,8 +3,7 @@
    * VSCode settings for the project
    * @see https://code.visualstudio.com/docs/getstarted/settings
    */
-
-   // Git settings
+  // Git settings
   "git.repositoryScanIgnoredFolders": [
     "node_modules",
     ".pnpm-store",
@@ -12,7 +11,6 @@
   ],
   "git.autoRepositoryDetection": true,
   "git.repositoryScanMaxDepth": 2,
-
   // File and editor settings
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 10000,
@@ -30,12 +28,10 @@
   "editor.quickSuggestions": {
     "strings": "on",
   },
-
   // Default editor for specific file types
   "workbench.editorAssociations": {
     "*.svg": "default" // Open SVG files with the default text editor
   },
-
   // Trusted domains
   "json.schemaDownload.trustedDomains": {
     "https://schemastore.azurewebsites.net/": true,
@@ -45,7 +41,6 @@
     "https://json-schema.org/": true,
     "https://ui.shadcn.com/": true
   },
-
   // File associations and exclusions
   "files.eol": "\n",
   "files.associations": {
@@ -65,7 +60,6 @@
     "**/node_modules": true,
     "**/.next": true
   },
-
   // Search exclusions
   "search.exclude": {
     "**/.git": true,
@@ -105,7 +99,6 @@
     "**/pytest_cache": true
   },
   "search.useIgnoreFiles": false,
-
   /**
    * Web Settings
    */
@@ -119,40 +112,28 @@
     "class:list",
     ".*Styles.*"
   ],
-  
   /**
   * Nodejs Project Settings
   */
   "npm.packageManager": "pnpm",
-  "eslint.enable": true,
-  "eslint.run": "onSave",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
+  "oxc.enable": true,
+  "oxc.lint.run": "onSave",
+  "oxc.typeAware": true,
+  "tailwindCSS.classFunctions": [
+    "cva",
+    "cx",
+    "clsx"
   ],
-  "tailwindCSS.classFunctions": ["cva", "cx", "clsx"],
   "js/ts.updateImportsOnFileMove.enabled": "never",
   "[typescript][javascript][typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
+      "source.fixAll.oxc": "explicit"
     },
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   },
   "[jsonc][json]": {
-    "editor.defaultFormatter": "vscode.json-language-features",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    }
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "[json][jsonc]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    },
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  },
-
   /**
    * Python Project Settings
    */
@@ -162,10 +143,18 @@
   "python.languageServer": "None", // Using Astral TY instead of Pylance
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
-  "ruff.interpreter": ["${workspaceFolder}/.venv/bin/python"],
-  "ruff.path": ["${workspaceFolder}/.venv/bin/ruff"],
-  "ty.interpreter": ["${workspaceFolder}/.venv/bin/python"],
-  "ty.path": ["${workspaceFolder}/.venv/bin/ty"],
+  "ruff.interpreter": [
+    "${workspaceFolder}/.venv/bin/python"
+  ],
+  "ruff.path": [
+    "${workspaceFolder}/.venv/bin/ruff"
+  ],
+  "ty.interpreter": [
+    "${workspaceFolder}/.venv/bin/python"
+  ],
+  "ty.path": [
+    "${workspaceFolder}/.venv/bin/ty"
+  ],
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
@@ -174,22 +163,21 @@
       "source.organizeImports": "explicit"
     }
   },
-
   /**
    * AI Technology Settings
    * Copilot: https://code.visualstudio.com/docs/copilot/customization/overview
    */
-   "chat.useAgentsMdFile": true,
-   "chat.useAgentSkills": true,
-   "chat.useNestedAgentsMdFiles": true,
-   "chat.agent.maxRequests": 128,
-   "chat.agentFilesLocations": {
+  "chat.useAgentsMdFile": true,
+  "chat.useAgentSkills": true,
+  "chat.useNestedAgentsMdFiles": true,
+  "chat.agent.maxRequests": 128,
+  "chat.agentFilesLocations": {
     ".code/agents": true
-   },
-   "chat.instructionsFilesLocations": {
-     ".code": true
-    },
-    "chat.agentSkillsLocations": {
-     ".code/skills": true,
-    },
+  },
+  "chat.instructionsFilesLocations": {
+    ".code": true
+  },
+  "chat.agentSkillsLocations": {
+    ".code/skills": true,
+  },
 }

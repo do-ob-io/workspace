@@ -60,8 +60,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
+        "oxc.oxc-vscode",
         "bradlc.vscode-tailwindcss",
         "vitest.explorer",
         "redhat.vscode-yaml",
