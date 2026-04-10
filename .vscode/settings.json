@@ -8,7 +8,10 @@
   "git.repositoryScanIgnoredFolders": [
     "node_modules",
     ".pnpm-store",
-    ".venv"
+    ".venv",
+    ".cache",
+    "__pycache__",
+    "target",
   ],
   "git.autoRepositoryDetection": true,
   "git.repositoryScanMaxDepth": 2,
