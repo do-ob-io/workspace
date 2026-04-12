@@ -135,6 +135,7 @@
     "typescript",
     "typescriptreact"
   ],
+  "vitest.configSearchPatternExclude": "{**/node_modules/**,**/.git/**}",
   "tailwindCSS.classFunctions": ["cva", "cx", "clsx"],
   "js/ts.updateImportsOnFileMove.enabled": "never",
   "[typescript][javascript][typescriptreact]": {

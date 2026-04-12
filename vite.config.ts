@@ -95,16 +95,21 @@ export default defineConfig({
         test: {
           name: { label: 'node', color: 'green' },
           environment: 'node',
-          include: [ 'nodejs/**/*.test.ts' ],
-          exclude: [ 'nodejs/**/*.browser.test.ts' ],
+          include: [ `${nodejsDir}/**/*.test.ts` ],
+          exclude: [
+            `${nodejsDir}/**/*.browser.test.ts`,
+            '**/node_modules/**',
+            '**/.git/**',
+          ],
         },
       },
       {
         plugins: [ createWorkspaceAtAliasPlugin() ],
         test: {
-          name: { label: 'browser', color: 'green' },
+          name: { label: 'browser', color: 'red' },
           environment: 'happy-dom',
-          include: [ 'nodejs/**/*.browser.test.ts' ],
+          include: [ `${nodejsDir}/**/*.browser.test.ts` ],
+          exclude: [ '**/node_modules/**', '**/.git/**' ],
         },
       },
       {
