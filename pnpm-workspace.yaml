@@ -1,6 +1,8 @@
 packages:
   - nodejs/*
 catalog:
+  '@better-auth/oauth-provider': ^1
+  better-auth: ^1
   vitest: ^4.1.0
 
 catalogs:
@@ -33,6 +35,7 @@ catalogs:
     '@fastify/cors': ^11
     '@fastify/redis': ^7
     '@fastify/helmet': ^13
+    '@fastify/formbody': ^8
     '@fastify/middie': ^9
     '@fastify/otel': ^0
     '@fastify/rate-limit': ^10
