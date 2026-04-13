@@ -9,6 +9,9 @@
   "scripts": {
     "lint": "eslint --fix",
     "test": "vitest run",
+    "test:node": "vitest run --project node",
+    "test:browser": "vitest run --project browser",
+    "test:storybook": "vitest run --project storybook",
     "typedoc": "typedoc --options ./typedoc.json",
     "typedoc2": "pnpm run -r --if-present typedoc",
     "storybook": "storybook dev -p 6006",

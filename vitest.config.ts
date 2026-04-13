@@ -1,5 +1,3 @@
-/// <reference types="vitest/config" />
-
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -77,9 +75,9 @@ export default defineConfig({
         test: {
           name: { label: 'node', color: 'green' },
           environment: 'node',
-          include: [ `nodejs/*/src/**/*.test.ts` ],
+          include: [ 'nodejs/*/src/**/*.test.ts' ],
           exclude: [
-            `**/*.browser.test.ts`,
+            '**/*.browser.test.ts',
           ],
         },
       },
@@ -88,39 +86,34 @@ export default defineConfig({
         test: {
           name: { label: 'browser', color: 'red' },
           environment: 'happy-dom',
-          include: [ `nodejs/*/src/**/*.browser.test.ts` ],
+          include: [ 'nodejs/*/src/**/*.browser.test.ts' ],
         },
       },
-      // {
-      //   plugins: [
-      //     // The plugin will run tests for the stories defined in your Storybook config
-      //     // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-      //     storybookTest({
-      //       configDir: path.join(dirname, '.storybook'),
-      //     })
-      //   ],
-      //   test: {
-      //     name: 'storybook',
-      //     fileParallelism: false,
-      //     maxWorkers: 1,
-      //     env: {
-      //       HEADLESS: 'true',
-      //     },
-      //     browser: {
-      //       enabled: true,
-      //       headless: true,
-      //       provider: playwright({
-      //         launchOptions: {
-      //           headless: true,
-      //         },
-      //       }),
-      //       instances: [ {
-      //         browser: 'chromium',
-      //       } ],
-      //     },
-      //     setupFiles: [ '.storybook/vitest.setup.ts' ],
-      //   },
-      // },
+      {
+        plugins: [
+          // The plugin will run tests for the stories defined in your Storybook config
+          // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
+          storybookTest({
+            configDir: path.join(dirname, '.storybook'),
+          }),
+        ],
+        test: {
+          name: 'storybook',
+          env: {
+            HEADLESS: 'true',
+          },
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: playwright({
+              launchOptions: {
+                headless: true,
+              },
+            }),
+            instances: [ { browser: 'chromium' } ],
+          },
+        },
+      },
     ],
   },
 });

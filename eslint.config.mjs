@@ -121,7 +121,6 @@ export default defineConfig([
 
       // React rules
       'react-hooks/immutability': 'error',
-      '@eslint-react/naming-convention/use-state': 'error',
 
       // Tailwind rules
       'better-tailwindcss/no-unknown-classes': 'off',
