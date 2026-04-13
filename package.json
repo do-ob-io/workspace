@@ -7,6 +7,7 @@
     "node": "25"
   },
   "scripts": {
+    "lint": "eslint --fix",
     "test": "vitest run",
     "typedoc": "typedoc --options ./typedoc.json",
     "typedoc2": "pnpm run -r --if-present typedoc",
@@ -48,6 +49,7 @@
     "eslint-plugin-storybook": "catalog:eslint",
     "eslint-plugin-unicorn": "catalog:eslint",
     "globals": "catalog:eslint",
+    "happy-dom": "^20.8.3",
     "playwright": "^1.59.1",
     "postcss": "^8.5.9",
     "react": "catalog:react",

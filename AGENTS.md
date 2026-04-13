@@ -74,14 +74,13 @@
 
 ### NodeJS quality tools (CRITICAL)
 
-- **Tools are globally installed** - Run commands directly without `pnpm` or `npx` prefix unless explicitly shown
 - `cd` to the appropriate project directory before running commands
 
-| Type          | Base Command                                  | Description                     | Instructions                                |
-| ------------- | --------------------------------------------- | ------------------------------- | ------------------------------------------- |
-| Typechecking  | `tsc --noEmit`                                | TypeScript Compiler             | `cd` to specific project                    |
-| Linting       | `eslint --fix`, `eslint --fix <path-to-file>` | Linter and auto-fixer           | Use from workspace root or specific project |
-| Testing       | `vitest run`, `vitest run <path-to-file>`     | Testing framework               | Use from workspace root or specific project |
+| Type          | Base Command                                        | Description                     | Instructions                                |
+| ------------- | --------------------------------------------------- | ------------------------------- | ------------------------------------------- |
+| Typechecking  | `tsc --noEmit`                                      | TypeScript Compiler             | `cd` to specific project                    |
+| Linting       | `pnpm lint`, `pnpm lint <path-to-file>`             | Linter and auto-fixer           | Use from workspace root or specific project |
+| Testing       | `pnpm test`, `pnpm test <path-to-file>`             | Testing framework               | Use from workspace root or specific project |
 | Build         | `pnpm build`                                  | Build the project               | `cd` to specific project                    |
 | Documentation | `pnpm typedoc`                                | TypeDoc documentation generator | Use from workspace root                     |
 
