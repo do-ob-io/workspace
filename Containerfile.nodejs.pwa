@@ -2,12 +2,14 @@ ARG NODE_VERSION=25
 ARG PORT=8080
 ARG PROJECT
 ARG PROJECT_PATH=nodejs/${PROJECT}
+ARG NODEJS_DEPS=
 
 FROM node:${NODE_VERSION} AS builder
 
 # Re-declare build args for this stage
 ARG PROJECT
 ARG PROJECT_PATH=nodejs/${PROJECT}
+ARG NODEJS_DEPS=
 
 # Install pnpm and set up environment
 ENV PNPM_HOME="/pnpm"
@@ -21,8 +23,13 @@ WORKDIR /app
 COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
-# Build all projects from workspace root (required for interdependencies)
-RUN pnpm run -r build
+# Build only specified dependency projects in order, then build the PROJECT
+RUN if [ -n "$NODEJS_DEPS" ]; then \
+  for dep in $(echo "$NODEJS_DEPS" | tr ',' ' '); do \
+  pnpm --filter "$dep" build; \
+  done; \
+  fi && \
+  pnpm --filter "$PROJECT" build
 
 # Production stage - minimal static file server
 FROM busybox:stable-musl
