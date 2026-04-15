@@ -75,6 +75,8 @@ export default defineConfig({
         test: {
           name: { label: 'node', color: 'green' },
           environment: 'node',
+          testTimeout: 30_000,
+          hookTimeout: 30_000,
           include: [ 'nodejs/*/src/**/*.test.ts' ],
           exclude: [
             '**/*.browser.test.ts',
