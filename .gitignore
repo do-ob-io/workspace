@@ -3,6 +3,7 @@ container/**/*
 nodejs/**/*
 python/**/*
 rust/**/*
+deploy/
 !container/AGENTS.md
 !nodejs/AGENTS.md
 !python/AGENTS.md
