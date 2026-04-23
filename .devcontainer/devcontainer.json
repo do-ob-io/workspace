@@ -77,6 +77,7 @@
         "charliermarsh.ruff",
         "rust-lang.rust-analyzer",
         "vadimcn.vscode-lldb",
+        "exiasr.hadolint",
 
         // Opt out of the following extensions by adding a "-" prefix
         "-ms-python.vscode-pylance",
