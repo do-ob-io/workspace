@@ -1,8 +1,8 @@
 # Workspace
-container/**/*
 nodejs/**/*
 python/**/*
 rust/**/*
+container/
 deploy/
 !container/AGENTS.md
 !nodejs/AGENTS.md
