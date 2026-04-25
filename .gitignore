@@ -4,11 +4,6 @@ python/**/*
 rust/**/*
 container/
 deploy/
-!container/AGENTS.md
-!nodejs/AGENTS.md
-!python/AGENTS.md
-!rust/AGENTS.md
-!container/README.md
 !nodejs/README.md
 !python/README.md
 !rust/README.md
