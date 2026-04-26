@@ -10,6 +10,26 @@ if ! command -v uv >/dev/null 2>&1; then
   curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
 
+# ------------------------------------------------------------------------------
+# Install container-structure-test (requires sudo to install to /usr/local/bin)
+# ------------------------------------------------------------------------------
+if ! command -v container-structure-test >/dev/null 2>&1; then
+  if command -v sudo >/dev/null 2>&1 && sudo -n true >/dev/null 2>&1; then
+    cst_arch="$(uname -m)"
+    case "$cst_arch" in
+      x86_64) cst_arch="amd64" ;;
+      aarch64|arm64) cst_arch="arm64" ;;
+    esac
+    tmp_cst="$(mktemp)"
+    curl -LsSf "https://github.com/GoogleContainerTools/container-structure-test/releases/latest/download/container-structure-test-linux-${cst_arch}" \
+      -o "$tmp_cst"
+    chmod +x "$tmp_cst"
+    sudo mv "$tmp_cst" /usr/local/bin/container-structure-test
+  else
+    echo "Skipping container-structure-test install: sudo not available."
+  fi
+fi
+
 uv tool install ty@latest
 uv tool install ruff@latest
 uv sync --all-packages
