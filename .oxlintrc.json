@@ -312,20 +312,6 @@
       "jsPlugins": [
         "eslint-plugin-storybook"
       ]
-    },
-    {
-      "files": [
-        "**/*.{js,jsx,mjs,ts,tsx}"
-      ],
-      "rules": {
-        "@eslint-react/use-state": "error",
-        "depend/ban-dependencies": "error"
-      },
-      "jsPlugins": [
-        "@eslint-react/eslint-plugin",
-        "eslint-plugin-better-tailwindcss",
-        "eslint-plugin-depend"
-      ]
     }
   ]
 }
