@@ -8,13 +8,13 @@ export default defineConfig({
   plugins: [
     react(),
     babel({
-      presets: [ reactCompilerPreset() ],
+      presets: [reactCompilerPreset()],
     }),
     tailwindcss(),
   ],
   server: {
     host: true,
-    allowedHosts: [ '.localhost' ],
+    allowedHosts: ['.localhost'],
   },
   resolve: {
     tsconfigPaths: true,

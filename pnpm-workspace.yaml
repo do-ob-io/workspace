@@ -15,19 +15,9 @@ catalogs:
     zod: ^4
   eslint:
     '@eslint-react/eslint-plugin': ^2.13.0
-    '@eslint/js': ^9.39.4
-    '@stylistic/eslint-plugin': ^5.10.0
-    eslint: ^9.39.4
-    eslint-import-resolver-typescript: ^4.4.4
     eslint-plugin-better-tailwindcss: ^4.3.2
     eslint-plugin-depend: ^1.5.0
-    eslint-plugin-import-x: ^4.16.2
-    eslint-plugin-react-hooks: ^7.0.1
-    eslint-plugin-react-refresh: ^0.5.2
     eslint-plugin-storybook: ^10.3.5
-    eslint-plugin-unicorn: ^63.0.0
-    globals: ^17.4.0
-    typescript-eslint: ^8.58.0
   fastify:
     '@fastify/autoload': ^6
     '@fastify/compress': ^8
