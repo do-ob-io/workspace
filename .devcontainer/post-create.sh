@@ -37,6 +37,12 @@ uv sync --all-packages
 npm install -g eslint@9 typescript vitest @go-task/cli shadcn
 
 # ------------------------------------------------------------------------------
+# Configure global git ignore for the vscode user
+# ------------------------------------------------------------------------------
+install -m 0644 .devcontainer/files/.gitignore "$HOME/.gitignore"
+git config --global core.excludesFile "$HOME/.gitignore"
+
+# ------------------------------------------------------------------------------
 # Install git-all shell function into .zshrc
 # ------------------------------------------------------------------------------
 if ! grep -q 'git-all()' ~/.zshrc 2>/dev/null; then

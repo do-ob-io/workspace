@@ -1,0 +1,7 @@
+# Workspace Ignores
+nodejs/**/*
+python/**/*
+rust/**/*
+!nodejs/README.md
+!python/README.md
+!rust/README.md

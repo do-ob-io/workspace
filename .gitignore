@@ -1,12 +1,6 @@
 # Workspace
-nodejs/**/*
-python/**/*
-rust/**/*
 container/
 deploy/
-!nodejs/README.md
-!python/README.md
-!rust/README.md
 package-lock.json
 pnpm-lock.yaml
 uv.lock
