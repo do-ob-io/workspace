@@ -61,7 +61,7 @@
 ### NodeJS dependency management (CRITICAL)
 
 - All new dependencies must use `catalog:` version specifiers in project `package.json` files
-- Define and categorize dependency versions in the `pnpm-workspace.yaml` catalogs (e.g., `react`, `vite`, `typescript`, `eslint`, etc.)
+- Define and categorize dependency versions in the `pnpm-workspace.yaml` catalogs (e.g., `react`, `vite`, `typescript`, `oxc`, etc.)
 - Use the default `catalog` for uncategorized or cross-cutting dependencies
 
 ### NodeJS shared project libraries (IMPORTANT)

@@ -26,9 +26,9 @@ Applies to all NodeJS projects.
 - All other tests use the `.test.ts` suffix.
 
 ### Linting instructions
-- Tool `eslint` is globally installed and used as the linter.
-- Use `eslint --fix .` from the root of the workspace to run the linter and auto-fix linting issues.
-- Use `eslint --fix <path-to-file>` to run the linter on a specific file.
+- Tool `oxc` is globally installed and used as the linter.
+- Use `oxc --fix .` from the root of the workspace to run the linter and auto-fix linting issues.
+- Use `oxc --fix <path-to-file>` to run the linter on a specific file.
 
 ## Documentation instructions
 - Use `pnpm typedoc` to generate TypeDoc documentation for NodeJS projects.
