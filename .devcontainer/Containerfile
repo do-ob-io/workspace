@@ -1,11 +1,8 @@
-FROM mcr.microsoft.com/devcontainers/base:ubuntu
+FROM mcr.microsoft.com/devcontainers/base:noble
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && \
-  apt-get install -y --no-install-recommends \
-  gnupg2=2.4.4-2ubuntu17.4 \
-  && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install gnupg2 -y
 
 # Copy hadolint wrapper script
 COPY files/hadolint-wrapper.sh /usr/local/bin/hadolint

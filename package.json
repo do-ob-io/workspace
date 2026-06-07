@@ -4,7 +4,7 @@
   "description": "Workspace for do-ob npm NodeJS projects",
   "private": true,
   "engines": {
-    "node": "25"
+    "node": "26.3.0"
   },
   "scripts": {
     "lint": "oxlint --fix",
