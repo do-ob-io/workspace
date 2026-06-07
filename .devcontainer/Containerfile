@@ -2,7 +2,10 @@ FROM mcr.microsoft.com/devcontainers/base:noble
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install gnupg2 -y
+RUN apt-get update && \
+  apt-get install --no-install-recommends -y \
+  gnupg2=2.* \
+  && rm -rf /var/lib/apt/lists/*
 
 # Copy hadolint wrapper script
 COPY files/hadolint-wrapper.sh /usr/local/bin/hadolint
