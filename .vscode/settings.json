@@ -37,12 +37,8 @@
   },
   // Trusted domains
   "json.schemaDownload.trustedDomains": {
-    "https://schemastore.azurewebsites.net/": true,
-    "https://raw.githubusercontent.com/": true,
-    "https://www.schemastore.org/": true,
-    "https://json.schemastore.org/": true,
-    "https://json-schema.org/": true,
-    "https://ui.shadcn.com/": true
+    "https://ui.shadcn.com/schema.json": true,
+    "https://opencode.ai/config.json": true
   },
   // File associations and exclusions
   "files.eol": "\n",
