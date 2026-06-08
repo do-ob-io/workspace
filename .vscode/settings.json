@@ -149,9 +149,7 @@
   "ruff.path": [
     "${workspaceFolder}/.venv/bin/ruff"
   ],
-  "ty.interpreter": [
-    "${workspaceFolder}/.venv/bin/python"
-  ],
+  "ty.interpreter": "${workspaceFolder}/.venv/bin/python",
   "ty.path": [
     "${workspaceFolder}/.venv/bin/ty"
   ],
