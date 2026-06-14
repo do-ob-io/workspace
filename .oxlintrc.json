@@ -1,18 +1,18 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": [
-    "typescript",
-    "react",
-    "unicorn",
-    "import"
-  ],
+  "plugins": ["typescript", "react", "unicorn", "import"],
   "categories": {
-    "correctness": "off"
+    "correctness": "warn"
   },
   "env": {
     "builtin": true,
     "browser": true,
     "es2026": true
+  },
+  "options": {
+    "typeAware": true,
+    "typeCheck": true,
+    "maxWarnings": 10
   },
   "ignorePatterns": [
     "!nodejs/**/*",
@@ -252,38 +252,7 @@
   },
   "overrides": [
     {
-      "files": [
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.mts",
-        "**/*.cts"
-      ],
-      "rules": {
-        "constructor-super": "off",
-        "no-class-assign": "off",
-        "no-const-assign": "off",
-        "no-dupe-class-members": "off",
-        "no-dupe-keys": "off",
-        "no-func-assign": "off",
-        "no-import-assign": "off",
-        "no-new-native-nonconstructor": "off",
-        "no-obj-calls": "off",
-        "no-redeclare": "off",
-        "no-setter-return": "off",
-        "no-this-before-super": "off",
-        "no-unsafe-negation": "off",
-        "no-var": "error",
-        "no-with": "off",
-        "prefer-const": "error",
-        "prefer-rest-params": "error",
-        "prefer-spread": "error"
-      }
-    },
-    {
-      "files": [
-        "**/*.stories.@(ts|tsx|js|jsx|mjs|cjs)",
-        "**/*.story.@(ts|tsx|js|jsx|mjs|cjs)"
-      ],
+      "files": ["**/*.stories.@(ts|tsx|js|jsx|mjs|cjs)", "**/*.story.@(ts|tsx|js|jsx|mjs|cjs)"],
       "rules": {
         "storybook/await-interactions": "error",
         "storybook/context-in-play-function": "error",
@@ -298,20 +267,14 @@
         "import/no-anonymous-default-export": "off",
         "react/rules-of-hooks": "off"
       },
-      "jsPlugins": [
-        "eslint-plugin-storybook"
-      ]
+      "jsPlugins": ["eslint-plugin-storybook"]
     },
     {
-      "files": [
-        ".storybook/main.@(js|cjs|mjs|ts)"
-      ],
+      "files": [".storybook/main.@(js|cjs|mjs|ts)"],
       "rules": {
         "storybook/no-uninstalled-addons": "error"
       },
-      "jsPlugins": [
-        "eslint-plugin-storybook"
-      ]
+      "jsPlugins": ["eslint-plugin-storybook"]
     }
   ]
 }

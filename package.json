@@ -1,27 +1,26 @@
 {
   "name": "do-ob-io",
   "version": "1.0.0",
-  "description": "Workspace for do-ob npm NodeJS projects",
   "private": true,
-  "engines": {
-    "node": "26.3.0"
-  },
-  "scripts": {
-    "lint": "oxlint --fix",
-    "test": "vitest run",
-    "test:node": "vitest run --project node",
-    "test:browser": "vitest run --project browser",
-    "test:storybook": "vitest run --project storybook",
-    "typedoc": "typedoc --options ./typedoc.json",
-    "typedoc2": "pnpm run -r --if-present typedoc",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
+  "description": "Workspace for do-ob npm NodeJS projects",
+  "license": "ISC",
+  "author": "",
   "workspaces": [
     "nodejs/*"
   ],
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "build-storybook": "storybook build",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint --fix",
+    "storybook": "storybook dev -p 6006",
+    "test": "vitest run",
+    "test:browser": "vitest run --project browser",
+    "test:node": "vitest run --project node",
+    "test:storybook": "vitest run --project storybook",
+    "typedoc": "typedoc --options ./typedoc.json",
+    "typedoc2": "pnpm run -r --if-present typedoc"
+  },
   "devDependencies": {
     "@babel/core": "^7.29.7",
     "@eslint-react/eslint-plugin": "catalog:eslint",
@@ -43,6 +42,7 @@
     "eslint-plugin-better-tailwindcss": "catalog:eslint",
     "eslint-plugin-depend": "catalog:eslint",
     "eslint-plugin-storybook": "catalog:eslint",
+    "oxfmt": "^0.54.0",
     "oxlint": "^1.68.0",
     "oxlint-tsgolint": "^0.20.0",
     "playwright": "^1.60.0",
@@ -70,5 +70,8 @@
     "vite-plugin-pwa": {
       "vite": "$vite"
     }
+  },
+  "engines": {
+    "node": "26.3.0"
   }
 }

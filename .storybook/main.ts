@@ -93,11 +93,18 @@ function getAbsolutePath(value: string): any {
   return path.dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
 }
 const config: StorybookConfig = {
-  'stories': projectPaths.map((project) => ({
-    directory: `../nodejs/${project}/src`,
-    files: '**/*.stories.@(js|jsx|mjs|ts|tsx)',
-    titlePrefix: toTitleCase(project),
-  })),
+  'stories': [
+    ...projectPaths.map((project) => ({
+      directory: `../nodejs/${project}/src`,
+      files: '**/*.stories.@(js|jsx|mjs|ts|tsx)',
+      titlePrefix: toTitleCase(project),
+    })),
+    {
+      directory: '../stories',
+      files: '**/*.stories.@(js|jsx|mjs|ts|tsx)',
+      titlePrefix: 'Workspace',
+    },
+  ],
   'staticDirs': staticDirs,
   'addons': [
     getAbsolutePath('@storybook/addon-vitest'),

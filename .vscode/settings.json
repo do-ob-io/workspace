@@ -10,7 +10,7 @@
     ".venv",
     ".cache",
     "__pycache__",
-    "target",
+    "target"
   ],
   "git.autoRepositoryDetection": true,
   "git.repositoryScanMaxDepth": 2,
@@ -22,14 +22,14 @@
   "files.readonlyInclude": {
     "**/.cargo/registry/src/**/*.rs": true,
     "**/.cargo/git/checkouts/**/*.rs": true,
-    "**/lib/rustlib/src/rust/library/**/*.rs": true,
+    "**/lib/rustlib/src/rust/library/**/*.rs": true
   },
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.quickSuggestions": {
-    "strings": "on",
+    "strings": "on"
   },
   // Default editor for specific file types
   "workbench.editorAssociations": {
@@ -104,35 +104,26 @@
   "html.format.unformatted": "wbr,%",
   "css.lint.unknownAtRules": "ignore",
   "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
-  "tailwindCSS.classAttributes": [
-    "class",
-    "className",
-    "ngClass",
-    "class:list",
-    ".*Styles.*"
-  ],
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "class:list", ".*Styles.*"],
   /**
-  * Nodejs Project Settings
-  */
+   * Nodejs Project Settings
+   */
   "npm.packageManager": "pnpm",
   "oxc.enable": true,
   "oxc.lint.run": "onSave",
   "oxc.typeAware": true,
-  "tailwindCSS.classFunctions": [
-    "cva",
-    "cx",
-    "clsx"
-  ],
+  "tailwindCSS.classFunctions": ["cva", "cx", "clsx"],
+  "oxc.fmt.configPath": ".oxfmtrc.json",
   "vitest.configSearchPatternExclude": "{**/node_modules/**,**/.git/**}",
   "js/ts.updateImportsOnFileMove.enabled": "never",
   "[typescript][javascript][typescriptreact]": {
     "editor.defaultFormatter": "oxc.oxc-vscode",
     "editor.codeActionsOnSave": {
-      "source.fixAll.oxc": "explicit"
-    },
+      "source.fixAll.oxc": "always"
+    }
   },
   "[jsonc][json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   /**
    * Python Project Settings
@@ -143,16 +134,10 @@
   "python.languageServer": "None", // Using Astral TY instead of Pylance
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
-  "ruff.interpreter": [
-    "${workspaceFolder}/.venv/bin/python"
-  ],
-  "ruff.path": [
-    "${workspaceFolder}/.venv/bin/ruff"
-  ],
+  "ruff.interpreter": ["${workspaceFolder}/.venv/bin/python"],
+  "ruff.path": ["${workspaceFolder}/.venv/bin/ruff"],
   "ty.interpreter": "${workspaceFolder}/.venv/bin/python",
-  "ty.path": [
-    "${workspaceFolder}/.venv/bin/ty"
-  ],
+  "ty.path": ["${workspaceFolder}/.venv/bin/ty"],
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
@@ -176,6 +161,6 @@
     ".code": true
   },
   "chat.agentSkillsLocations": {
-    ".code/skills": true,
-  },
+    ".code/skills": true
+  }
 }
