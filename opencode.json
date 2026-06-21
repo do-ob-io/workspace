@@ -1,3 +1,35 @@
 {
-  "$schema": "https://opencode.ai/config.json"
+  "$schema": "https://opencode.ai/config.json",
+
+  "disabled_providers": ["opencode"],
+
+  "provider": {
+    "mlx-local-coder": {
+      "name": "MLX Local Coder",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://host.container.internal:8041/v1"
+      },
+      "models": {
+        "mlx-community/Qwen3-Coder-Next-4bit": {
+          "name": "Qwen3 Code Next",
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          }
+        }
+      }
+    }
+  },
+
+  "model": "mlx-community/Qwen3-Coder-Next-4bit",
+  "small_model": "mlx-community/Qwen3-Coder-Next-4bit",
+
+  "lsp": true,
+  "formatter": true,
+
+  "permission": {
+    "edit": "allow",
+    "bash": "allow"
+  }
 }

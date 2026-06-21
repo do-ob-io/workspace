@@ -38,7 +38,8 @@
   // Trusted domains
   "json.schemaDownload.trustedDomains": {
     "https://ui.shadcn.com/schema.json": true,
-    "https://opencode.ai/config.json": true
+    "https://opencode.ai/config.json": true,
+    "https://models.dev": true
   },
   // File associations and exclusions
   "files.eol": "\n",
