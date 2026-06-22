@@ -4,6 +4,7 @@ allowBuilds:
   esbuild: false
   msw: false
   protobufjs: false
+  sharp: false
 catalog:
   "@better-auth/oauth-provider": ^1
   better-auth: ^1
