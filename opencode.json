@@ -13,6 +13,7 @@
       "models": {
         "mlx-community/Qwen3-Coder-Next-4bit": {
           "name": "Qwen3 Code Next",
+          "tool_call": true,
           "limit": {
             "context": 32768,
             "input": 24576,
@@ -25,6 +26,63 @@
 
   "model": "mlx-community/Qwen3-Coder-Next-4bit",
   "small_model": "mlx-community/Qwen3-Coder-Next-4bit",
+
+  "tool_output": {
+    "max_lines": 200,
+    "max_bytes": 12000
+  },
+
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "tail_turns": 1,
+    "preserve_recent_tokens": 8000,
+    "reserved": 6000
+  },
+
+  "agent": {
+    "build": {
+      "steps": 8,
+
+      "permission": {
+        "read": "allow",
+        "grep": "allow",
+        "glob": "allow",
+        "edit": "allow",
+        "skill": "allow",
+        "list": "deny",
+        "webfetch": "deny",
+        "bash": "allow",
+        "external_directory": "ask",
+        "question": "allow",
+        "websearch": "allow",
+        "lsp": "allow",
+        "doom_loop": "ask"
+      }
+    },
+
+    "plan": {
+      "steps": 4,
+
+      "permission": {
+        "read": "allow",
+        "grep": "allow",
+        "glob": "allow",
+        "edit": "ask",
+        "skill": "allow",
+        "task": "allow",
+        "todowrite": "allow",
+        "list": "allow",
+        "webfetch": "allow",
+        "bash": "ask",
+        "external_directory": "ask",
+        "question": "allow",
+        "websearch": "deny",
+        "lsp": "allow",
+        "doom_loop": "ask"
+      }
+    }
+  },
 
   "lsp": true,
   "formatter": true,
