@@ -54,8 +54,8 @@
         "webfetch": "deny",
         "bash": "allow",
         "external_directory": "ask",
-        "question": "allow",
-        "websearch": "allow",
+        "question": "deny",
+        "websearch": "deny",
         "lsp": "allow",
         "doom_loop": "ask"
       }
@@ -72,8 +72,8 @@
         "skill": "allow",
         "task": "allow",
         "todowrite": "allow",
-        "list": "allow",
-        "webfetch": "allow",
+        "list": "deny",
+        "webfetch": "ask",
         "bash": "ask",
         "external_directory": "ask",
         "question": "allow",
