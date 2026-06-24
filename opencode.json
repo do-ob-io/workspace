@@ -14,9 +14,9 @@
         "mlx-community/Qwen3-Coder-Next-4bit": {
           "name": "Qwen3 Code Next",
           "limit": {
-            "context": 16384,
-            "input": 16384,
-            "output": 4096
+            "context": 65536,
+            "input": 32768,
+            "output": 16384
           }
         }
       }
