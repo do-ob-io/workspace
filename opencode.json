@@ -63,7 +63,7 @@
     },
 
     "plan": {
-      "steps": 4,
+      "steps": 8,
 
       "permission": {
         "read": "allow",
